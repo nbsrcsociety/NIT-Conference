@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "CONF 2026 Conference Website"
+description = "A responsive, multi-page conference website for an international AI, computing, IoT, and data analytics event, with patterned visual identity, calls for papers, committee information, submissions, special sessions, and registration details."
+version = "1.0.0"
+id = "artifacts/conf-2026"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 24156
+
+[services.development]
+run = "pnpm --filter @workspace/conf-2026 run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/conf-2026", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/conf-2026/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "24156"
+BASE_PATH = "/"
