@@ -44,13 +44,14 @@ type HeroSlide = {
   detail: string;
   note: string;
   pattern: string;
+  image?: string;
 };
 
 const heroSlides: HeroSlide[] = [
   { kicker: '1st International Conference', title: 'Machine Learning and its Applications', detail: '14 – 16 December 2026  |  [Venue], [City], [Country]', note: 'AI for the next generation of computing', pattern: 'pattern-neural' },
-  { kicker: 'A connected research forum', title: 'Where intelligent systems meet the physical world', detail: 'Hybrid mode  |  Global call for original research', note: 'Build signals that move beyond the screen', pattern: 'pattern-circuit' },
-  { kicker: 'For researchers, builders & leaders', title: 'Turn rigorous ideas into shared momentum', detail: 'Tracks across AI, Computing, IoT and Data Science', note: 'A conference shaped by useful questions', pattern: 'pattern-hex' },
-  { kicker: 'One room. Many disciplines.', title: 'The data, devices and decisions of tomorrow', detail: '[Institute], [City], [Country]  |  14 – 16 October 2026', note: 'Submit your next significant result', pattern: 'pattern-dots' },
+  { kicker: 'A connected research forum', title: 'Where intelligent systems meet the physical world', detail: 'Hybrid mode  |  Global call for original research', note: 'Build signals that move beyond the screen', pattern: 'pattern-circuit',image: '/slide3.png' },
+  { kicker: 'For researchers, builders & leaders', title: 'Turn rigorous ideas into shared momentum', detail: 'Applications of AI in various Domains', note: 'A conference shaped by useful questions', pattern: 'pattern-hex',image: '/slide2.jpg' },
+  { kicker: 'One room. Many disciplines.', title: 'The data, devices and decisions of tomorrow', detail: '[Institute], [City], [Country]  |  14 – 16 December 2026', note: 'Submit your next significant result', pattern: 'pattern-dots',image: '/slide1.jpg' },
 ];
 
 const navItems = [
@@ -165,7 +166,22 @@ function HeroSlider({ compact = false, pageLabel }: { compact?: boolean; pageLab
   const move = (direction: number) => setActive((current) => (current + direction + heroSlides.length) % heroSlides.length);
   return (
     <section aria-label="Conference highlights" aria-live="polite" role="region" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)} onFocus={() => setPaused(true)} onBlur={() => setPaused(false)} onKeyDown={(event) => { if (event.key === 'ArrowRight') move(1); if (event.key === 'ArrowLeft') move(-1); }} tabIndex={0} onTouchStart={(event) => setTouchStart(event.touches[0].clientX)} onTouchEnd={(event) => { if (touchStart === null) return; const distance = event.changedTouches[0].clientX - touchStart; if (Math.abs(distance) > 40) move(distance > 0 ? -1 : 1); setTouchStart(null); }} className={cn('hero-gradient relative isolate overflow-hidden border-b border-cyan-300/20', compact ? 'min-h-[390px]' : 'min-h-[650px] md:min-h-[700px]')}>
-      {heroSlides.map((item, index) => <div key={item.title} aria-hidden={index !== active} className={cn('absolute inset-0 -z-10 opacity-0 transition-opacity duration-1000', item.pattern, index === active && 'opacity-100')} />)}
+      {heroSlides.map((item, index) => (
+  <div
+    key={item.title}
+    aria-hidden={index !== active}
+    className={cn(
+      'absolute inset-0 -z-10 bg-cover bg-center opacity-0 transition-opacity duration-1000',
+      !item.image && item.pattern,
+      index === active && 'opacity-100'
+    )}
+    style={
+      item.image
+        ? { backgroundImage: `url(${item.image})` }
+        : undefined
+    }
+  />
+))}
       <div className="absolute inset-0 -z-[5] overflow-hidden"><div className={cn('hero-orbit', compact && 'scale-75')} /><div className="absolute right-[16%] top-[32%] h-2 w-2 rounded-full bg-cyan-300 shadow-[0_0_26px_#00e5ff]" /><div className="absolute right-[24%] top-[67%] h-1.5 w-1.5 rounded-full bg-violet-300 shadow-[0_0_18px_#a78bfa]" /></div>
       <div className="absolute inset-0 -z-[4] bg-gradient-to-b from-transparent via-transparent to-[#050b1f]/90" />
       <div className="mx-auto flex max-w-[1440px] items-center px-5 py-20 lg:px-10" style={{ minHeight: compact ? 390 : 650 }}>
