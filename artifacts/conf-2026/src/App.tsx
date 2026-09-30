@@ -47,7 +47,7 @@ type HeroSlide = {
 };
 
 const heroSlides: HeroSlide[] = [
-  { kicker: '4th International Conference', title: 'Artificial Intelligence, Computing Technologies, IoT & Data Analytics', detail: '14 – 16 October 2026  |  [Venue], [City], [Country]', note: 'AI for the next generation of computing', pattern: 'pattern-neural' },
+  { kicker: '1st International Conference', title: 'Machine Learning and its Applications', detail: '14 – 16 December 2026  |  [Venue], [City], [Country]', note: 'AI for the next generation of computing', pattern: 'pattern-neural' },
   { kicker: 'A connected research forum', title: 'Where intelligent systems meet the physical world', detail: 'Hybrid mode  |  Global call for original research', note: 'Build signals that move beyond the screen', pattern: 'pattern-circuit' },
   { kicker: 'For researchers, builders & leaders', title: 'Turn rigorous ideas into shared momentum', detail: 'Tracks across AI, Computing, IoT and Data Science', note: 'A conference shaped by useful questions', pattern: 'pattern-hex' },
   { kicker: 'One room. Many disciplines.', title: 'The data, devices and decisions of tomorrow', detail: '[Institute], [City], [Country]  |  14 – 16 October 2026', note: 'Submit your next significant result', pattern: 'pattern-dots' },
