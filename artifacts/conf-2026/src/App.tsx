@@ -48,7 +48,7 @@ type HeroSlide = {
 };
 
 const heroSlides: HeroSlide[] = [
-  { kicker: '1st International Conference', title: 'Machine Learning and its Applications', detail: '14 – 16 December 2026  |  [Venue], [City], [Country]', note: 'AI for the next generation of computing',pattern: 'pattern-neural', image: '/banner1.png' },
+  { kicker: '1st International Conference', title: 'International Conference on AI and ML for Computing and Cyber Security', detail: '16 – 18 September 2027  |  NIT CAMPUS, Silchar, India', note: 'I-AM-ComCyS 2027',pattern: 'pattern-neural', image: '/banner1.png' },
   { kicker: 'A connected research forum', title: 'Where intelligent systems meet the physical world', detail: 'Hybrid mode  |  Global call for original research', note: 'Build signals that move beyond the screen', pattern: 'pattern-circuit',image: '/slide3.png' },
   { kicker: 'For researchers, builders & leaders', title: 'Turn rigorous ideas into shared momentum', detail: 'Applications of AI in various Domains', note: 'A conference shaped by useful questions', pattern: 'pattern-hex',image: '/slide2.jpg' },
   { kicker: 'One room. Many disciplines.', title: 'The data, devices and decisions of tomorrow', detail: '[Institute], [City], [Country]  |  14 – 16 December 2026', note: 'Submit your next significant result', pattern: 'pattern-dots',image: '/slide1.jpg' },
@@ -236,8 +236,63 @@ function ImportantDates() {
 }
 
 function SpeakerCards() {
-  const speakers = ['[Speaker Name]', '[Speaker Name]', '[Speaker Name]', '[Speaker Name]', '[Speaker Name]'];
-  return <section className="pattern-grid px-5 py-24 lg:px-10"><div className="mx-auto max-w-[1440px]"><SectionHeading eyebrow="People worth making time for" title="Keynote & invited speakers" children="A first look at the voices shaping this year’s conversation. Full biographies and portraits will be added soon." /><div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">{speakers.map((speaker, index) => <article key={`${speaker}-${index}`} data-testid={`card-speaker-${index}`} className="card-lift rounded-2xl border border-blue-900/10 bg-[#f7faff]/70 p-4"><div className={cn('hex-avatar pattern-mesh flex aspect-square items-center justify-center border border-cyan-300/40', index % 2 === 0 ? 'rotate-2' : '-rotate-2')}><div className="hex-avatar flex h-24 w-24 items-center justify-center border border-cyan-200/40 bg-[#0b2360] font-display text-3xl text-cyan-200">{String(index + 1).padStart(2, '0')}</div></div><h3 className="mt-5 font-display text-xl font-semibold">{speaker}</h3><p className="mt-2 font-mono-brand text-[10px] uppercase leading-5 tracking-[.08em] text-blue-700">[Affiliation]<br />[Country / Institute]</p></article>)}</div></div></section>;
+  const speakers = [
+    {
+      name: 'Prof. Kaushik Dutta',
+      affiliation:
+        'Interim Director, School of Information Systems and Management, University of South Florida',
+         image: '/speaker1.jpg',
+    },
+    {
+      name: 'Prof. Ashish Ghosh',
+      affiliation: 'ISI Kolkata (Present Director IIIT Bhubaneswar)',
+      image: '/speaker2.jfif',
+    },
+    {
+      name: 'Prof. Sudan Jha',
+      affiliation:
+        'Department of Computer Science & Engineering, Kathmandu University, Nepal',
+        image: '/speaker3.jfif',
+    },
+  ];
+
+return (
+  <section className="pattern-grid px-5 py-24 lg:px-10">
+    <div className="mx-auto max-w-[1440px]">
+      <SectionHeading
+        eyebrow="People worth making time for"
+        title="Keynote & invited speakers"
+        children="A first look at the voices shaping this year’s conversation. Full biographies and portraits will be added soon."
+      />
+
+      <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {speakers.map((speaker, index) => (
+          <article
+            key={`${speaker.name}-${index}`}
+            data-testid={`card-speaker-${index}`}
+            className="card-lift rounded-2xl border border-blue-900/10 bg-[#f7faff]/70 p-4"
+          >
+            <div className="flex aspect-square w-full items-center justify-center overflow-hidden">
+              <img
+                src={speaker.image}
+                alt={speaker.name}
+                className="h-full w-full object-contain"
+              />
+            </div>
+
+            <h3 className="mt-5 font-display text-xl font-semibold">
+              {speaker.name}
+            </h3>
+
+            <p className="mt-2 font-mono-brand text-[10px] uppercase leading-5 tracking-[.08em] text-blue-700">
+              {speaker.affiliation}
+            </p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+);
 }
 
 function Gallery() {
@@ -247,7 +302,7 @@ function Gallery() {
 }
 
 function Footer() {
-  return <footer id="contact" className="pattern-circuit section-dark wave-edge px-5 pb-8 pt-20 lg:px-10"><div className="mx-auto max-w-[1440px]"><div className="grid gap-10 border-b border-cyan-200/15 pb-12 md:grid-cols-[1.3fr_.8fr_.8fr]"><div><p className="eyebrow text-cyan-300">Contact the organising desk</p><h2 className="mt-3 max-w-sm font-display text-4xl font-semibold">Good research starts with a door left open.</h2><div className="mt-6 grid gap-3 text-sm text-slate-300"><p className="flex gap-3"><Building2 size={17} className="mt-0.5 shrink-0 text-cyan-300" />[Department], [Institute]</p><p className="flex gap-3"><MapPin size={17} className="mt-0.5 shrink-0 text-cyan-300" />[Address], [City], [Country]</p><p className="flex gap-3"><Mail size={17} className="mt-0.5 shrink-0 text-cyan-300" /><a href="mailto:[email]" className="hover:text-cyan-200">[email]</a></p></div></div><div><p className="eyebrow text-cyan-300">Organizer</p><h3 className="mt-4 font-display text-xl">[Institute / Society]</h3><a href="#" data-testid="link-organizer" className="mt-3 inline-flex items-center gap-2 text-sm text-cyan-200 hover:text-cyan-100">Visit organizer <ExternalLink size={14} /></a></div><div><p className="eyebrow text-cyan-300">Publication partner</p><div className="mt-4 flex h-20 items-center rounded-xl border border-cyan-200/20 bg-slate-950/20 px-5 font-display text-2xl font-bold tracking-tight text-slate-200">[Publisher]</div><p className="mt-3 text-xs leading-5 text-slate-400">Proceedings series [Series], subject to final editorial checks.</p></div></div><div className="flex flex-col justify-between gap-4 pt-7 text-xs text-slate-400 md:flex-row"><p>© 2026 [CONF 2026] · [Institute]. Built for ideas with somewhere to go.</p><a href="#top" data-testid="link-back-to-top" className="inline-flex items-center gap-2 text-cyan-200 hover:text-cyan-100">Back to top <ArrowUpRight size={14} /></a></div></div></footer>;
+  return <footer id="contact" className="pattern-circuit section-dark wave-edge px-5 pb-8 pt-20 lg:px-10"><div className="mx-auto max-w-[1440px]"><div className="grid gap-10 border-b border-cyan-200/15 pb-12 md:grid-cols-[1.3fr_.8fr_.8fr]"><div><p className="eyebrow text-cyan-300">Contact the organising desk</p><h2 className="mt-3 max-w-sm font-display text-4xl font-semibold">Good research starts with a door left open.</h2><div className="mt-6 grid gap-3 text-sm text-slate-300"><p className="flex gap-3"><Building2 size={17} className="mt-0.5 shrink-0 text-cyan-300" />ECE Department,NIT Silchar</p><p className="flex gap-3"><MapPin size={17} className="mt-0.5 shrink-0 text-cyan-300" />NIT SILCHAR, SILCHAR, INDIA</p><p className="flex gap-3"><Mail size={17} className="mt-0.5 shrink-0 text-cyan-300" /><a href="mailto:[email]" className="hover:text-cyan-200">banani@ece.nits.ac.in</a></p></div></div><div><p className="eyebrow text-cyan-300">Organizer</p><h3 className="mt-4 font-display text-xl">Centre for AI and ML for Applications, NIT Silchar</h3><a href="https://www.nits.ac.in/" data-testid="link-organizer" className="mt-3 inline-flex items-center gap-2 text-sm text-cyan-200 hover:text-cyan-100">Visit organizer <ExternalLink size={14} /></a></div><div><p className="eyebrow text-cyan-300">Publication partner</p><div className="mt-4 flex h-20 items-center rounded-xl border border-cyan-200/20 bg-slate-950/20 px-5 font-display text-2xl font-bold tracking-tight text-slate-200">Procedia Computer Science </div><p className="mt-3 text-xs leading-5 text-slate-400">Proceedings series Volume to be announced, subject to final editorial checks.</p></div></div><div className="flex flex-col justify-between gap-4 pt-7 text-xs text-slate-400 md:flex-row"><p>© 2027 [I-AM-ComCyS 2027] · NIT SILCHAR. Built for ideas with somewhere to go.</p><a href="#top" data-testid="link-back-to-top" className="inline-flex items-center gap-2 text-cyan-200 hover:text-cyan-100">Back to top <ArrowUpRight size={14} /></a></div></div></footer>;
 }
 
 function PageShell({ children, pageLabel, compact = true }: { children: ReactNode; pageLabel?: string; compact?: boolean }) {
@@ -256,42 +311,114 @@ function PageShell({ children, pageLabel, compact = true }: { children: ReactNod
 
 function Home() {
   usePageMeta('International Conference on AI & Computing', 'CONF 2026 brings together research across artificial intelligence, computing, IoT and data analytics.');
-  return <PageShell compact={false}><AnnouncementRow /><section className="pattern-grid px-5 py-24 lg:px-10"><div className="mx-auto grid max-w-[1440px] items-center gap-12 lg:grid-cols-[1fr_.65fr]"><div><SectionHeading eyebrow="Welcome to CONF 2026" title="A sharper conversation about intelligent systems." children="CONF 2026 is an international meeting point for researchers, practitioners and curious minds working where computation touches the world. Bring a paper, a prototype, a question or a perspective that deserves a wider room." /><p className="mt-7 border-l-2 border-blue-600 pl-5 font-display text-xl italic text-blue-900">Conference theme: [Theme placeholder]</p><p className="mt-6 max-w-xl text-sm leading-7 text-slate-600">Across three days, four tracks and one generous community, we will examine the systems that make tomorrow more capable, responsible and human-centred.</p><Link href="/call-for-papers" data-testid="link-home-explore-tracks" className="mt-8 inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-[.14em] text-blue-700 hover:text-cyan-700">Explore the tracks <ArrowRight size={16} /></Link></div><div className="pattern-mesh relative min-h-[380px] overflow-hidden rounded-[2rem] border border-blue-900/15 p-8 shadow-2xl shadow-blue-900/10"><div className="absolute -right-16 -top-14 h-56 w-56 rounded-full border border-cyan-200/30" /><div className="absolute bottom-8 left-8 h-28 w-28 rounded-full border border-violet-300/20" /><div className="relative flex min-h-[315px] flex-col justify-between"><div className="font-mono-brand text-xs uppercase tracking-[.18em] text-cyan-200">[Institute mark]</div><div><div className="font-display text-7xl font-semibold tracking-[-.09em] text-slate-50 md:text-9xl">C<span className="text-cyan-300">/</span>26</div><p className="mt-3 max-w-xs text-sm leading-6 text-slate-300">An event of [Society / Institute]</p></div><div className="flex items-center justify-between border-t border-cyan-200/20 pt-4 font-mono-brand text-[10px] uppercase tracking-[.12em] text-cyan-100/70"><span>Signals into systems</span><span>14—16 / 10 / 26</span></div></div></div></div></section><section className="pattern-mesh wave-edge section-dark px-5 pb-24 pt-20 lg:px-10"><div className="mx-auto flex max-w-[1440px] flex-col items-start justify-between gap-8 md:flex-row md:items-end"><div className="max-w-2xl"><SectionHeading eyebrow="Make the venue part of the story" title="Venue: [Institute]" dark children="[Institute] welcomes the conference to [City], a place where research, design and everyday life have a habit of crossing paths." /></div><Link href="#" data-testid="link-more-about-institute" className="button-pattern rounded-lg px-5 py-3 text-xs font-extrabold uppercase tracking-[.13em]">More about [Institute] <ArrowUpRight className="ml-1 inline" size={14} /></Link></div></section><section className="pattern-dots px-5 py-24 lg:px-10"><div className="mx-auto grid max-w-[1440px] gap-10 lg:grid-cols-[.7fr_1.3fr]"><SectionHeading eyebrow="What is moving" title="Updates" children="A small, useful stream of things to know as the programme takes shape." /><div className="grid gap-3">{['[12 March 2026] · Proceedings inclusion has been approved by [Publisher].', '[24 February 2026] · Special session proposals are now invited.', '[08 January 2026] · The first call for papers is now live.'].map((item, index) => <Link href={index === 1 ? '/special-sessions' : '/call-for-papers'} data-testid={`link-update-${index}`} key={item} className="group flex items-center justify-between gap-6 border-b border-blue-900/15 py-5 text-sm text-slate-700 hover:text-blue-700"><span>{item}</span><ArrowRight className="shrink-0 text-blue-600 transition-transform group-hover:translate-x-1" size={17} /></Link>)}</div></div></section><ImportantDates /><SpeakerCards /><section className="pattern-circuit section-dark px-5 py-24 lg:px-10"><div className="mx-auto grid max-w-[1440px] items-center gap-10 lg:grid-cols-[.85fr_1.15fr]"><div><SectionHeading eyebrow="A record that travels" title="Conference proceedings in [Publisher] [Series]" dark children="Approved proceedings inclusion gives accepted work a clear next step: discoverable, citable and ready to join the broader conversation." /><span className="mt-7 inline-flex items-center gap-2 rounded-full border border-cyan-300/40 bg-cyan-300/10 px-4 py-2 text-xs font-bold text-cyan-200"><ShieldCheck size={15} /> Publisher series approved</span></div><div className="pattern-hex mx-auto flex aspect-[3/4] w-full max-w-sm items-end rounded-2xl border border-cyan-200/30 p-7 shadow-2xl shadow-cyan-900/30"><div><BookOpen size={34} className="text-cyan-300" /><p className="mt-12 font-mono-brand text-[10px] uppercase tracking-[.18em] text-cyan-200">Proceedings / volume [X]</p><h3 className="mt-3 font-display text-4xl font-semibold text-slate-50">The future is a shared result.</h3><p className="mt-4 text-sm text-slate-300">[Publisher] · [Series]</p></div></div></div></section><section className="pattern-waves px-5 py-24 lg:px-10"><div className="mx-auto max-w-[1440px]"><SectionHeading eyebrow="Publication, without the fog" title="Proceedings publication" children="Accepted papers will be considered for publication through [Publisher / Series], subject to quality checks and the publisher’s final editorial process. There is no additional charge for non-open-access publication. Abstracts and short papers under four pages are not considered." /><a href="#" data-testid="link-publisher-series" className="mt-6 inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-[.14em] text-blue-700 hover:text-cyan-700">Explore the publisher series <ExternalLink size={15} /></a><div className="mt-12 grid gap-5 md:grid-cols-3">{['[Previous edition] · Volume [X]', '[Previous edition] · Volume [X]', '[Previous edition] · Volume [X]'].map((title, index) => <a href="#" data-testid={`link-previous-proceedings-${index}`} key={title + index} className="card-lift group rounded-2xl border border-blue-900/10 bg-[#f6f9ff]/75 p-5"><div className="pattern-mesh flex aspect-[4/3] items-end rounded-xl p-5 text-slate-50"><span className="font-mono-brand text-[10px] uppercase tracking-[.14em]">Proceedings {String(index + 1).padStart(2, '0')}</span></div><div className="mt-4 flex items-center justify-between text-sm font-bold text-slate-800"><span>{title}</span><ArrowUpRight size={16} className="text-blue-600 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" /></div></a>)}</div></div></section><section className="pattern-grid px-5 py-24 lg:px-10"><div className="mx-auto max-w-[1440px]"><SectionHeading eyebrow="More context, more connection" title="Three ways into the conference" /><div className="mt-10 grid gap-5 lg:grid-cols-3">{[['About [Institute]', 'A place for ambitious questions and patient work.', 'pattern-neural'], ['About [Department]', 'The people and practices behind this year’s programme.', 'pattern-circuit'], ['About [City]', 'A city-sized invitation to keep the conversation going.', 'pattern-hex']].map(([title, text, pattern], index) => <article key={title} className="card-lift overflow-hidden rounded-2xl border border-blue-900/10 bg-[#f7faff]/70"><div className={cn('h-32', pattern)} /><div className="p-6"><h3 className="font-display text-2xl font-semibold">{title}</h3><p className="mt-3 text-sm leading-6 text-slate-600">{text}</p><a href="#" data-testid={`link-about-${index}`} className="mt-6 inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-[.12em] text-blue-700">More about {title.replace('About ', '')} <ArrowRight size={15} /></a></div></article>)}</div></div></section><Gallery /></PageShell>;
+  return <PageShell compact={false}><AnnouncementRow /><section className="pattern-grid px-5 py-24 lg:px-10"><div className="mx-auto grid max-w-[1440px] items-center gap-12 lg:grid-cols-[1fr_.65fr]"><div><SectionHeading eyebrow="Welcome to I-AM-ComCyS 2027" title="A sharper conversation about intelligent systems." children="I-AM-ComCyS 2027 is an international meeting point for researchers, practitioners and curious minds working where computation touches the world. Bring a paper, a prototype, a question or a perspective that deserves a wider room." /><p className="mt-7 border-l-2 border-blue-600 pl-5 font-display text-xl italic text-blue-900">Conference theme: International Conference on AI and ML for Computing and Cyber Security</p><p className="mt-6 max-w-xl text-sm leading-7 text-slate-600">Across three days, multiple tracks and one generous community, we will examine the systems that make tomorrow more capable, responsible and human-centred.</p><Link href="/call-for-papers" data-testid="link-home-explore-tracks" className="mt-8 inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-[.14em] text-blue-700 hover:text-cyan-700">Explore the tracks <ArrowRight size={16} /></Link></div><div className="pattern-mesh relative min-h-[380px] overflow-hidden rounded-[2rem] border border-blue-900/15 p-8 shadow-2xl shadow-blue-900/10"><div className="absolute -right-16 -top-14 h-56 w-56 rounded-full border border-cyan-200/30" /><div className="absolute bottom-8 left-8 h-28 w-28 rounded-full border border-violet-300/20" /><div className="relative flex min-h-[315px] flex-col justify-between"><div className="font-mono-brand text-xs uppercase tracking-[.18em] text-cyan-200">NIT SILCHAR</div><div><div className="font-display text-7xl font-semibold tracking-[-.09em] text-slate-50 md:text-3xl">I-AM-ComCyS <span className="text-cyan-300">/</span> 2027</div><p className="mt-3 max-w-xs text-sm leading-6 text-slate-300">An event of "Centre for AI and ML for Applications", NIT Silchar</p></div><div className="flex items-center justify-between border-t border-cyan-200/20 pt-4 font-mono-brand text-[10px] uppercase tracking-[.12em] text-cyan-100/70"><span>Computing and CyberSecurity</span><span>16-18 / 09 / 27</span></div></div></div></div></section><section className="pattern-mesh wave-edge section-dark px-5 pb-24 pt-20 lg:px-10"><div className="mx-auto flex max-w-[1440px] flex-col items-start justify-between gap-8 md:flex-row md:items-end"><div className="max-w-2xl"><SectionHeading eyebrow="Make the venue part of the story" title="Venue: NIT Silchar" dark children="NIT Silchar welcomes the conference to Silchar, a place where research, design and everyday life have a habit of crossing paths." /></div><a href="https://www.nits.ac.in/" data-testid="link-more-about-institute" className="button-pattern rounded-lg px-5 py-3 text-xs font-extrabold uppercase tracking-[.13em]">More about NIT <ArrowUpRight className="ml-1 inline" size={14} /></a></div></section><section className="pattern-dots px-5 py-24 lg:px-10"><div className="mx-auto grid max-w-[1440px] gap-10 lg:grid-cols-[.7fr_1.3fr]"><SectionHeading eyebrow="What is moving" title="Updates" children="A small, useful stream of things to know as the programme takes shape." /><div className="grid gap-3">{['[12 March 2026] · Proceedings inclusion has been approved by [Publisher].', '[24 February 2026] · Special session proposals are now invited.', '[08 January 2026] · The first call for papers is now live.'].map((item, index) => <Link href={index === 1 ? '/special-sessions' : '/call-for-papers'} data-testid={`link-update-${index}`} key={item} className="group flex items-center justify-between gap-6 border-b border-blue-900/15 py-5 text-sm text-slate-700 hover:text-blue-700"><span>{item}</span><ArrowRight className="shrink-0 text-blue-600 transition-transform group-hover:translate-x-1" size={17} /></Link>)}</div></div></section><ImportantDates /><SpeakerCards /><section className="pattern-circuit section-dark px-5 py-24 lg:px-10"><div className="mx-auto grid max-w-[1440px] items-center gap-10 lg:grid-cols-[.85fr_1.15fr]"><div><SectionHeading eyebrow="A record that travels" title="Conference Proceedings published in Procedia Computer Science by Elsevier" dark children="Approved proceedings inclusion gives accepted work a clear next step: discoverable, citable and ready to join the broader conversation." /><span className="mt-7 inline-flex items-center gap-2 rounded-full border border-cyan-300/40 bg-cyan-300/10 px-4 py-2 text-xs font-bold text-cyan-200"><ShieldCheck size={15} /> Publisher series approved</span></div><div className="pattern-hex mx-auto flex aspect-[3/4] w-full max-w-sm items-end rounded-2xl border border-cyan-200/30 p-7 shadow-2xl shadow-cyan-900/30"><div><BookOpen size={34} className="text-cyan-300" /><p className="mt-12 font-mono-brand text-[10px] uppercase tracking-[.18em] text-cyan-200">Proceedings / Volume to be announced</p><h3 className="mt-3 font-display text-4xl font-semibold text-slate-50">The future is a shared result.</h3><p className="mt-4 text-sm text-slate-300">Procedia Computer Science. Volume to be announced</p></div></div></div></section><section className="pattern-waves px-5 py-24 lg:px-10"><div className="mx-auto max-w-[1440px]"><SectionHeading eyebrow="Publication, without the fog" title="Proceedings publication" children="Accepted papers will be considered for publication through [Publisher / Series], subject to quality checks and the publisher’s final editorial process. There is no additional charge for non-open-access publication. Abstracts and short papers under four pages are not considered." /><a href="#" data-testid="link-publisher-series" className="mt-6 inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-[.14em] text-blue-700 hover:text-cyan-700">Explore the publisher series <ExternalLink size={15} /></a><div className="mt-12 grid gap-5 md:grid-cols-3">{['[Previous edition] · Volume [X]', '[Previous edition] · Volume [X]', '[Previous edition] · Volume [X]'].map((title, index) => <a href="#" data-testid={`link-previous-proceedings-${index}`} key={title + index} className="card-lift group rounded-2xl border border-blue-900/10 bg-[#f6f9ff]/75 p-5"><div className="pattern-mesh flex aspect-[4/3] items-end rounded-xl p-5 text-slate-50"><span className="font-mono-brand text-[10px] uppercase tracking-[.14em]">Proceedings {String(index + 1).padStart(2, '0')}</span></div><div className="mt-4 flex items-center justify-between text-sm font-bold text-slate-800"><span>{title}</span><ArrowUpRight size={16} className="text-blue-600 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" /></div></a>)}</div></div></section><section className="pattern-grid px-5 py-24 lg:px-10"><div className="mx-auto max-w-[1440px]"><SectionHeading eyebrow="More context, more connection" title="Three ways into the conference" /><div className="mt-10 grid gap-5 lg:grid-cols-3">{[['About [Institute]', 'A place for ambitious questions and patient work.', 'pattern-neural'], ['About [Department]', 'The people and practices behind this year’s programme.', 'pattern-circuit'], ['About [City]', 'A city-sized invitation to keep the conversation going.', 'pattern-hex']].map(([title, text, pattern], index) => <article key={title} className="card-lift overflow-hidden rounded-2xl border border-blue-900/10 bg-[#f7faff]/70"><div className={cn('h-32', pattern)} /><div className="p-6"><h3 className="font-display text-2xl font-semibold">{title}</h3><p className="mt-3 text-sm leading-6 text-slate-600">{text}</p><a href="#" data-testid={`link-about-${index}`} className="mt-6 inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-[.12em] text-blue-700">More about {title.replace('About ', '')} <ArrowRight size={15} /></a></div></article>)}</div></div></section><Gallery /></PageShell>;
 }
 
 const committeeRoles: Array<[string, string[]]> = [
-  ['Chief Patron', ['[Chief Patron Name] · [Designation], [Institute]']],
-  ['Patron', ['[Patron Name] · [Designation], [Institute]']],
-  ['Honorary Chairs', ['[Name] · [Institute]', '[Name] · [Institute]']],
-  ['General Chairs', ['[Name] · [Institute]', '[Name] · [Institute]']],
-  ['Chairman', ['[Name] · [Department], [Institute]']],
-  ['Organizing Secretary', ['[Name] · [Department], [Institute]']],
-  ['Hospitality & Registration Chairs', ['[Name] · [Institute]', '[Name] · [Institute]']],
-  ['Sponsorship Chairs', ['[Name] · [Institute]', '[Name] · [Institute]']],
-  ['Finance Chairs', ['[Name] · [Institute]', '[Name] · [Institute]']],
-  ['Publicity Chairs', ['[Name] · [Institute]', '[Name] · [Institute]']],
-  ['Website Chairs', ['[Name] · [Institute]', '[Name] · [Institute]']],
-  ['Webmaster', ['[Name] · [Institute]']],
+  ['Patron', [
+    'Prof. Dilip Kumar Baidya · Director, NIT Silchar, India'
+  ]],
+
+  ['Organizing Chairs', [
+    'Dr. Banani Basu · NIT Silchar, India',
+    'Dr. Jupita Hazarika · NIT Silchar, India',
+    'Dr. Atanu Sahoo · NIT Silchar, India',
+    'Dr. Ramanujam E · NIT Silchar, India',
+    'Dr. Biswarup Ganguly · NIT Silchar, India'
+  ]],
+
+  ['General Chairs', [
+    'Prof. Ivana Budinska · SAS, Slovakia',
+    'Prof. Alexandre E Escargueil · Sorbonne University, France',
+    'Prof. Ashish Ghosh · ISI Kolkata, India',
+    'Dr. S K Biswas · NIT Silchar, India'
+  ]],
+
+  ['Organizing Secretary', [
+    'Dr. Malaya Dutta Borah · NIT Silchar, India',
+    'Dr. Badal Soni · NIT Silchar, India',
+    'Dr. Sugnya Devi K · NIT Silchar, India',
+    'Dr. Dilip Kumar Ghosh'
+  ]],
+
+  ['Convener', [
+    'Dr. Kedar Nath Das · NIT Silchar, India',
+    'Dr. Partha Pakray · NIT Silchar, India',
+    'Dr. Arnab Nandi · NIT Silchar, India',
+    'Dr. Nabanita Adhikary · NIT Silchar, India'
+  ]],
+
+  ['Publication Chairs', [
+    'Dr. Sudarshan Sahoo · NIT Silchar, India',
+    'Dr. Malaya Dutta Borah · NIT Silchar, India',
+    'Dr. Ramanujam E · NIT Silchar, India'
+  ]],
+
+  ['Co-Convener', [
+    'Dr. Aparajita Dutta · NIT Silchar, India',
+    'Dr. Debbrota Paul Chowdhury · NIT Silchar, India'
+  ]],
+
+  ['Publicity Chairs', [
+    'Dr. Dalton Meitei T · Manipur University',
+    'Dr. Murugan R · NIT Pondicherry, India',
+    'Dr. Biswarup Ganguly · NIT Silchar, India',
+    'Dr. Jupita Hazarika · NIT Silchar, India',
+    'Dr. Rajarshi Pramanik · NIT Silchar, India'
+  ]],
+
+  ['Hospitality Chairs', [
+    'Dr. Malaya Dutta Borah · NIT Silchar, India',
+    'Dr. Jupitara Hazarika · NIT Silchar, India'
+  ]],
+
+  ['Finance Chairs', [
+    'Dr. Malaya Dutta Borah · NIT Silchar, India',
+    'Dr. Debbrota Paul Chowdhury · NIT Silchar, India'
+  ]],
+
+  ['Website Management Chairs', [
+    'Dr. Partha Pakray · NIT Silchar, India',
+    'Dr. Ripon Patgiri · NIT Silchar, India',
+    'Dr. Ramanujam E · NIT Silchar, India'
+  ]],
 ];
 
 function Committee() {
   usePageMeta('Organizing Committee', 'Meet the chairs, advisors and technical programme committee for CONF 2026.');
   const [filter, setFilter] = useState('');
-  const technical = ['[Committee Member] · [Institute]', '[Committee Member] · [Institute]', '[Committee Member] · [Institute]', '[Committee Member] · [Institute]', '[Committee Member] · [Institute]', '[Committee Member] · [Institute]', '[Committee Member] · [Institute]', '[Committee Member] · [Institute]', '[Committee Member] · [Institute]', '[Committee Member] · [Institute]'];
+  const technical = [
+  'Dr. Sangram Ray · NIT Sikkim',
+  'Dr. Deepanjal Shrestha · Associate Professor and Director of the International Relations Center at Pokhara University, Nepal',
+  'Dr. Badal Soni · NIT Silchar',
+  'Dr. Malaya Dutta Borah · NIT Silchar'
+];
   const filtered = technical.filter((member) => member.toLowerCase().includes(filter.toLowerCase()));
-  return <PageShell pageLabel="People behind the programme"><section className="pattern-grid px-5 py-24 lg:px-10"><div className="mx-auto max-w-[1120px]"><SectionHeading eyebrow="The people behind the programme" title="Organizing committee" children="A distributed team of researchers, hosts and detail-people making room for meaningful exchange." /><div className="mt-12 grid gap-5 md:grid-cols-2">{committeeRoles.map(([role, people], index) => <article key={role} data-testid={`card-committee-role-${index}`} className="card-lift overflow-hidden rounded-2xl border border-blue-900/10 bg-[#f7faff]/75"><div className="pattern-hex border-b border-cyan-300/20 px-5 py-3"><h2 className="font-mono-brand text-xs font-bold uppercase tracking-[.15em] text-cyan-100">{role}</h2></div><div className="grid gap-3 p-5">{(people as string[]).map((person, personIndex) => <p key={`${person}-${personIndex}`} className="flex items-start gap-3 text-sm text-slate-700"><Users size={15} className="mt-0.5 shrink-0 text-blue-600" />{person}</p>)}</div></article>)}</div><div className="mt-24"><p className="section-kicker">Guidance, experience, perspective</p><h2 className="mt-3 font-display text-4xl font-semibold">Advisory committee</h2><div className="pattern-circuit mt-7 grid gap-3 rounded-2xl border border-cyan-300/20 p-6 text-sm text-slate-200 md:grid-cols-2">{['[Advisor Name] · [Institute]', '[Advisor Name] · [Institute]', '[Advisor Name] · [Institute]', '[Advisor Name] · [Institute]'].map((person, personIndex) => <p key={`${person}-${personIndex}`} className="border-b border-cyan-200/15 pb-3">{person}</p>)}</div></div><div className="mt-24"><div className="flex flex-col justify-between gap-5 md:flex-row md:items-end"><div><p className="section-kicker">A broad technical lens</p><h2 className="mt-3 font-display text-4xl font-semibold">Technical program committee</h2></div><div className="relative"><Filter className="absolute left-3 top-3.5 text-blue-600" size={16} /><label className="sr-only" htmlFor="committee-filter">Filter committee</label><input id="committee-filter" data-testid="input-committee-filter" value={filter} onChange={(event) => setFilter(event.target.value)} placeholder="Filter by name or institute" className="w-full rounded-lg border border-blue-900/15 bg-[#f7faff]/80 py-3 pl-10 pr-4 text-sm outline-none focus:border-blue-500 md:w-72" /></div></div><div className="mt-7 grid gap-2 md:grid-cols-2">{filtered.map((member, index) => <div key={`${member}-${index}`} data-testid={`text-technical-member-${index}`} className="rounded-lg border border-blue-900/10 bg-[#f7faff]/70 px-4 py-3 text-sm text-slate-700">{member}</div>)}</div>{filtered.length === 0 && <p className="mt-6 rounded-lg border border-dashed border-blue-900/20 p-6 text-sm text-slate-600">No committee members match that filter.</p>}</div></div></section></PageShell>;
+  return <PageShell pageLabel="People behind the programme"><section className="pattern-grid px-5 py-24 lg:px-10"><div className="mx-auto max-w-[1120px]"><SectionHeading eyebrow="The people behind the programme" title="Organizing committee" children="A distributed team of researchers, hosts and detail-people making room for meaningful exchange." /><div className="mt-12 grid gap-5 md:grid-cols-2">{committeeRoles.map(([role, people], index) => <article key={role} data-testid={`card-committee-role-${index}`} className="card-lift overflow-hidden rounded-2xl border border-blue-900/10 bg-[#f7faff]/75"><div className="pattern-hex border-b border-cyan-300/20 px-5 py-3"><h2 className="font-mono-brand text-xs font-bold uppercase tracking-[.15em] text-cyan-100">{role}</h2></div><div className="grid gap-3 p-5">{(people as string[]).map((person, personIndex) => <p key={`${person}-${personIndex}`} className="flex items-start gap-3 text-sm text-slate-700"><Users size={15} className="mt-0.5 shrink-0 text-blue-600" />{person}</p>)}</div></article>)}</div><div className="mt-24"><div className="flex flex-col justify-between gap-5 md:flex-row md:items-end"><div><p className="section-kicker">A broad technical lens</p><h2 className="mt-3 font-display text-4xl font-semibold">Technical program committee</h2></div><div className="relative"><Filter className="absolute left-3 top-3.5 text-blue-600" size={16} /><label className="sr-only" htmlFor="committee-filter">Filter committee</label><input id="committee-filter" data-testid="input-committee-filter" value={filter} onChange={(event) => setFilter(event.target.value)} placeholder="Filter by name or institute" className="w-full rounded-lg border border-blue-900/15 bg-[#f7faff]/80 py-3 pl-10 pr-4 text-sm outline-none focus:border-blue-500 md:w-72" /></div></div><div className="mt-7 grid gap-2 md:grid-cols-2">{filtered.map((member, index) => <div key={`${member}-${index}`} data-testid={`text-technical-member-${index}`} className="rounded-lg border border-blue-900/10 bg-[#f7faff]/70 px-4 py-3 text-sm text-slate-700">{member}</div>)}</div>{filtered.length === 0 && <p className="mt-6 rounded-lg border border-dashed border-blue-900/20 p-6 text-sm text-slate-600">No committee members match that filter.</p>}</div></div></section></PageShell>;
 }
 
 const tracks = [
-  { title: 'Artificial Intelligence', pattern: 'pattern-neural', topics: ['Deep Learning', 'Neural Networks', 'LLMs & NLP', 'Expert Systems', 'Multi-agent Systems', 'Machine Learning', 'Image Processing', 'Biomedical Signals', 'Pattern Recognition', 'Computational Optimization', 'Robotics & Automation', 'Explainable AI'] },
-  { title: 'Computing', pattern: 'pattern-circuit', topics: ['Quantum Computing', 'HPC', 'Distributed & Parallel Systems', 'Cognitive Computing', 'Cloud & Grid', 'Embedded Systems', 'Edge Computing', 'Human-centred Computing', 'Green Computing'] },
-  { title: 'IoT & Diverse Applications', pattern: 'pattern-hex', topics: ['Internet of Things', 'Blockchain', '5G / 6G', 'Cybersecurity', 'Internet Security', 'Intrusion Detection', 'Web Services', 'Secure Transactions', 'Sensor Networks', 'Mobile Learning', 'Mobile Sensor Networks'] },
-  { title: 'Data Science', pattern: 'pattern-dots', topics: ['Big Data', 'Data Analytics', 'Predictive Analytics', 'Data Mining', 'Fuzzy Logic', 'Sentiment Analysis', 'Data Warehousing', 'Data Fusion', 'Information Retrieval'] },
+  { title: 'Sessions/Topics', pattern: 'pattern-neural', topics: [
+  'Artificial Intelligence and Machine Learning (AI/ML)',
+  'Advanced Artificial Intelligence and Emerging Technologies in Applications',
+  'AI-Enabled Solutions for Network Systems and Cybersecurity in applications',
+  'Intelligent Systems in Practice',
+  '5G Communication',
+  'Signal Processing',
+  'Electrical Power, Energy and Drives System',
+  'Control and Instrumentation',
+  'Biomedical',
+  'Renewable Energy',
+  'Optimization in AI and ML',
+  'AI and ML in Structural and Geotechnical Engineering',
+  'Application of AI and ML in Water Resources and Environmental Engineering'
+]},
+  
 ];
 
 function CallForPapers() {
   usePageMeta('Call for Papers', 'Explore the four research tracks and submit original work to CONF 2026.');
-  return <PageShell pageLabel="The invitation to contribute"><section className="pattern-waves px-5 py-20 lg:px-10"><div className="mx-auto max-w-[1120px]"><div className="flex flex-wrap gap-3"><a href="#" download data-testid="link-download-brochure" className="button-pattern rounded-lg px-5 py-3 text-xs font-extrabold uppercase tracking-[.12em]"><Download className="mr-2 inline" size={15} />Download brochure</a><Link href="/submission" data-testid="link-submission-guidelines" className="rounded-lg border border-blue-900/20 bg-[#f7faff]/70 px-5 py-3 text-xs font-extrabold uppercase tracking-[.12em] text-blue-800">Submission guidelines <ArrowRight className="ml-1 inline" size={15} /></Link></div><div className="mt-14"><SectionHeading eyebrow="Call for papers" title="Bring the hard question." children="We invite original research, applied studies and thoughtful provocations across the systems that make intelligence useful. Choose a track, find your edge and send us work with somewhere to go." /></div><div className="mt-16"><p className="section-kicker">Four connected lenses</p><h2 className="mt-3 font-display text-4xl font-semibold">Conference tracks</h2><div className="mt-8 grid gap-5 md:grid-cols-2">{tracks.map((track, index) => <article key={track.title} data-testid={`card-track-${index}`} className="card-lift overflow-hidden rounded-2xl border border-blue-900/10 bg-[#f7faff]/70"><div className={cn('min-h-32 p-6', track.pattern)}><div className="flex items-center justify-between text-cyan-100"><span className="font-mono-brand text-[10px] uppercase tracking-[.16em]">Track {index + 1}</span><ArrowDownRight size={19} /></div><h3 className="mt-8 font-display text-3xl font-semibold text-slate-50">{track.title}</h3></div><ul className="grid gap-2 p-6 sm:grid-cols-2">{track.topics.map((topic) => <li key={topic} className="flex items-start gap-2 text-sm text-slate-700"><span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-500" />{topic}</li>)}</ul></article>)}</div></div><div className="mt-20 grid gap-5 md:grid-cols-2"><article className="pattern-mesh rounded-2xl border border-cyan-300/25 p-7 text-slate-50"><Award className="text-cyan-300" size={24} /><h2 className="mt-8 font-display text-3xl font-semibold">Best paper awards</h2><p className="mt-3 text-sm leading-7 text-slate-300">One award per track, selected by the technical programme committee for originality, clarity and potential to travel beyond the room.</p></article><article className="pattern-circuit rounded-2xl border border-cyan-300/20 p-7 text-slate-50"><Sparkles className="text-cyan-300" size={24} /><h2 className="mt-8 font-display text-3xl font-semibold">Call for special session</h2><p className="mt-3 text-sm leading-7 text-slate-300">Propose a focused conversation on an emerging topic. Send a short rationale and organiser details to [email].</p><Link href="/special-sessions" data-testid="link-special-session-call" className="mt-6 inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-[.13em] text-cyan-200">See special sessions <ArrowRight size={15} /></Link></article></div></div></section></PageShell>;
+  return <PageShell pageLabel="The invitation to contribute"><section className="pattern-waves px-5 py-20 lg:px-10"><div className="mx-auto max-w-[1120px]"><div className="flex flex-wrap gap-3"><a href="#" download data-testid="link-download-brochure" className="button-pattern rounded-lg px-5 py-3 text-xs font-extrabold uppercase tracking-[.12em]"><Download className="mr-2 inline" size={15} />Download brochure</a><Link href="/submission" data-testid="link-submission-guidelines" className="rounded-lg border border-blue-900/20 bg-[#f7faff]/70 px-5 py-3 text-xs font-extrabold uppercase tracking-[.12em] text-blue-800">Submission guidelines <ArrowRight className="ml-1 inline" size={15} /></Link></div><div className="mt-14"><SectionHeading eyebrow="Call for papers" title="Bring the hard question." children="We invite original research, applied studies and thoughtful provocations across the systems that make intelligence useful. Choose a track, find your edge and send us work with somewhere to go." /></div><div className="mt-16"><p className="section-kicker">Four connected lenses</p><h2 className="mt-3 font-display text-4xl font-semibold">Conference tracks</h2><div className="mt-8 grid gap-5 md:grid-cols-1">{tracks.map((track, index) => <article key={track.title} data-testid={`card-track-${index}`} className="card-lift overflow-hidden rounded-2xl border border-blue-900/10 bg-[#f7faff]/70"><div className={cn('min-h-32 p-6', track.pattern)}><div className="flex items-center justify-between text-cyan-100"><span className="font-mono-brand text-[10px] uppercase tracking-[.16em]">Track {index + 1}</span><ArrowDownRight size={19} /></div><h3 className="mt-8 font-display text-3xl font-semibold text-slate-50">{track.title}</h3></div><ul className="grid gap-2 p-6 sm:grid-cols-2">{track.topics.map((topic) => <li key={topic} className="flex items-start gap-2 text-sm text-slate-700"><span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-500" />{topic}</li>)}</ul></article>)}</div></div><div className="mt-20 grid gap-5 md:grid-cols-2"><article className="pattern-mesh rounded-2xl border border-cyan-300/25 p-7 text-slate-50"><Award className="text-cyan-300" size={24} /><h2 className="mt-8 font-display text-3xl font-semibold">Best paper awards</h2><p className="mt-3 text-sm leading-7 text-slate-300">One award per track, selected by the technical programme committee for originality, clarity and potential to travel beyond the room.</p></article><article className="pattern-circuit rounded-2xl border border-cyan-300/20 p-7 text-slate-50"><Sparkles className="text-cyan-300" size={24} /><h2 className="mt-8 font-display text-3xl font-semibold">Call for special session</h2><p className="mt-3 text-sm leading-7 text-slate-300">Propose a focused conversation on an emerging topic. Send a short rationale and organiser details to [email].</p><Link href="/special-sessions" data-testid="link-special-session-call" className="mt-6 inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-[.13em] text-cyan-200">See special sessions <ArrowRight size={15} /></Link></article></div></div></section></PageShell>;
 }
 
 function Submission() {
