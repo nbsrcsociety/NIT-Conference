@@ -48,10 +48,10 @@ type HeroSlide = {
 };
 
 const heroSlides: HeroSlide[] = [
-  { kicker: '1st International Conference', title: 'International Conference on AI and ML for Computing and Cyber Security', detail: '16 – 18 September 2027  |  NIT CAMPUS, Silchar, India', note: 'I-AM-ComCyS 2027',pattern: 'pattern-neural', image: '/banner1.png' },
+  { kicker: '1st International Conference', title: 'International Conference on AI and ML for Computing and Cyber Security', detail: '16-18 September 2027 | NIT Silchar, India', note: 'I-AM-ComCyS 2027',pattern: 'pattern-neural', image: '/bannerfinal.png' },
   { kicker: 'A connected research forum', title: 'Where intelligent systems meet the physical world', detail: 'Hybrid mode  |  Global call for original research', note: 'Build signals that move beyond the screen', pattern: 'pattern-circuit',image: '/slide3.png' },
   { kicker: 'For researchers, builders & leaders', title: 'Turn rigorous ideas into shared momentum', detail: 'Applications of AI in various Domains', note: 'A conference shaped by useful questions', pattern: 'pattern-hex',image: '/slide2.jpg' },
-  { kicker: 'One room. Many disciplines.', title: 'The data, devices and decisions of tomorrow', detail: '[Institute], [City], [Country]  |  14 – 16 December 2026', note: 'Submit your next significant result', pattern: 'pattern-dots',image: '/slide1.jpg' },
+  { kicker: 'One room. Many disciplines.', title: 'The data, devices and decisions of tomorrow', detail: 'Nit Silchar, Assam, India  |  16 -18 September 2027', note: 'Submit your next significant result', pattern: 'pattern-dots',image: '/slide1.jpg' },
 ];
 
 const navItems = [
@@ -74,7 +74,7 @@ const searchDocs = [
 
 function usePageMeta(title: string, description: string) {
   useEffect(() => {
-    document.title = `${title} | CONF 2026`;
+    document.title = `${title} | I-AM-ComCyS 2027`;
     const meta = document.querySelector('meta[name="description"]') ?? document.createElement('meta');
     meta.setAttribute('name', 'description');
     meta.setAttribute('content', description);
@@ -103,10 +103,33 @@ function Header() {
   };
 
   return (
+     <>
+    {/* Fixed logos - stay visible while scrolling */}
+   {/* Fixed logos - stay visible while scrolling */}
+{/* Fixed logos - stay visible while scrolling */}
+<div className="fixed left-40 top-1/4 z-50 flex -translate-y-1/2 flex-col items-center gap-5">
+  <img
+    src="/nit_logo.jpg"
+    alt="NIT Silchar Logo"
+    className="h-30 w-30 object-contain"
+  />
+
+  <img
+    src="/conference-logo.jpeg"
+    alt="Conference Logo"
+    className="h-30 w-auto object-contain"
+  />
+</div>
+  
     <header className="glass-nav sticky top-0 z-40 border-b border-cyan-300/20 text-slate-100 shadow-xl shadow-slate-950/10">
+      
       <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-6 px-5 py-4 lg:px-10">
+        
         <Link href="/" data-testid="link-brand" className="group flex min-w-fit items-center gap-3" onClick={() => setMenuOpen(false)}>
-          <img src="/clogo.png" alt="CONF 2026" className="h-16 w-16 object-contain"/>
+        
+         
+          <img src="/clogo.png" alt="I-AM-ComCyS 2027" className="h-16 w-16 object-contain"/>
+          
           <span className="leading-none">
             <span className="block font-display text-xl font-bold tracking-tight">I-AM-COMSYS <span className="text-cyan-300">2027</span></span>
             <span className="mt-1 block font-mono-brand text-[9px] uppercase tracking-[.23em] text-slate-300">Signals / Systems / Society</span>
@@ -150,6 +173,7 @@ function Header() {
         </nav>
       )}
     </header>
+    </>
   );
 }
 
@@ -171,7 +195,7 @@ function HeroSlider({ compact = false, pageLabel }: { compact?: boolean; pageLab
     key={item.title}
     aria-hidden={index !== active}
     className={cn(
-      'absolute inset-0 -z-10 bg-cover bg-[center_30%] opacity-0 transition-opacity duration-1000',
+      'absolute inset-0 -z-10 bg-cover bg-center bg-no-repeat opacity-0 transition-opacity duration-1000',
       !item.image && item.pattern,
       index === active && 'opacity-100'
     )}
@@ -183,14 +207,14 @@ function HeroSlider({ compact = false, pageLabel }: { compact?: boolean; pageLab
   />
 ))}
       <div className="absolute inset-0 -z-[5] overflow-hidden"><div className={cn('hero-orbit', compact && 'scale-75')} /><div className="absolute right-[16%] top-[32%] h-2 w-2 rounded-full bg-cyan-300 shadow-[0_0_26px_#00e5ff]" /><div className="absolute right-[24%] top-[67%] h-1.5 w-1.5 rounded-full bg-violet-300 shadow-[0_0_18px_#a78bfa]" /></div>
-      <div className="absolute inset-0 -z-[4] bg-black/30" />
+      <div className="absolute inset-0 -z-[4] bg-black/10" />
       <div className="absolute inset-0 -z-[4] bg-gradient-to-b from-black/30 via-transparent to-[#050b1f]/90" />
      
-      <div className="mx-auto flex max-w-[1440px] items-center px-5 py-20 lg:px-10" style={{ minHeight: compact ? 390 : 650 }}>
+      <div className="mx-auto flex max-w-[1440px] items-center px-5 py-20 lg:px-4" style={{ minHeight: compact ? 390 : 650 }}>
         <div className="max-w-3xl reveal">
           {pageLabel && <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-cyan-300/30 bg-slate-950/30 px-3 py-1.5 font-mono-brand text-[10px] uppercase tracking-[.18em] text-cyan-200"><span className="h-1.5 w-1.5 rounded-full bg-cyan-300" /> {pageLabel}</div>}
           <p className="eyebrow text-cyan-300">{slide.kicker}</p>
-          <h1 className={cn('mt-4 max-w-4xl font-display font-semibold leading-[.98] tracking-[-.04em] text-slate-50', compact ? 'text-4xl md:text-6xl' : 'text-5xl md:text-7xl lg:text-[5.85rem]')}>{slide.title}</h1>
+          <h1 className={cn('mt-4 max-w-4xl font-display font-semibold leading-[.98] tracking-[-.04em] text-slate-50', compact ? 'text-4xl md:text-6xl' : 'text-5xl md:text-7xl lg:text-[3.8rem]')}>{slide.title}</h1>
           <p className="mt-6 max-w-xl font-mono-brand text-xs leading-7 text-cyan-100/80 md:text-sm">{slide.detail}<span className="ml-1 inline-block h-4 w-px translate-y-1 animate-pulse bg-cyan-300" /></p>
           <p className="mt-2 text-sm italic text-slate-300">{slide.note}</p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
