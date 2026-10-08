@@ -323,13 +323,13 @@ function HeroSlider({ compact = false, pageLabel }: { compact?: boolean; pageLab
 
 
 {/* LEFT-SIDE INSTITUTIONAL LOGOS */}
-<div className="absolute left-[-90px] top-1/2 z-10 hidden -translate-y-1/2 flex-col items-center gap-5 lg:flex">
+<div className="hero-logos absolute left-[-90px] top-[86%] z-10 hidden -translate-y-1/2 flex-col items-center gap-5 lg:flex">
   <div className="flex h-55 w-55 items-center justify-center overflow-hidden rounded-full bg-white/90 p-2 shadow-xl ring-2 ring-cyan-300/50">
-    <img
-      src="/nit_logo.png"
-      alt="NIT Silchar Logo"
-      className="h-600 w-200 object-contain"
-    />
+   <img
+  src="/nit_logo.png"
+  alt="NIT Silchar Logo"
+  className="h-full w-full scale-[1.10] object-contain"
+ />
   </div>
 
   <div className="flex h-55 w-55 items-center justify-center overflow-hidden rounded-full bg-white/90 p-2 shadow-xl ring-2 ring-cyan-300/50">
