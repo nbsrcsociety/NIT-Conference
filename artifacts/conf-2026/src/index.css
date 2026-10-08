@@ -183,7 +183,109 @@
   .wave-edge { clip-path: polygon(0 7%, 12% 4%, 25% 7%, 40% 2%, 57% 7%, 74% 3%, 88% 6%, 100% 1%, 100% 100%, 0 100%); padding-top: 5rem; margin-top: -2.5rem; }
   .hex-avatar { clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0 50%); }
   .reveal { animation: reveal-up .7s both; }
-  .delay-1 { animation-delay: .08s; } .delay-2 { animation-delay: .16s; } .delay-3 { animation-delay: .24s; }
+
+
+.scroll-reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scroll-reveal.reveal-hidden {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.scroll-reveal.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+
+
+
+.delay-1 { animation-delay: .08s; }
+.delay-2 { animation-delay: .16s; }
+.delay-3 { animation-delay: .24s; }
+
+
+
+
+
+
+.site-shell > footer {
+  animation: section-rise-in 1.4s ease-out both;
+  animation-delay: 0.15s;
+}
+
+.site-shell > footer > div {
+  animation: footer-content-in 1.2s ease-out both;
+  animation-delay: 0.25s;
+}
+
+@keyframes footer-content-in {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.site-footer-column {
+  animation: footer-column-in 1.1s ease-out both;
+}
+
+.site-footer-column:nth-child(1) {
+  animation-delay: 0.10s;
+}
+
+.site-footer-column:nth-child(2) {
+  animation-delay: 0.22s;
+}
+
+.site-footer-column:nth-child(3) {
+  animation-delay: 0.34s;
+}
+
+.site-footer-column:nth-child(4) {
+  animation-delay: 0.46s;
+}
+
+@keyframes footer-column-in {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+
+
+
+
+@keyframes section-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+ 
   .focus-ring:focus-visible, a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid rgba(0,229,255,.8); outline-offset: 3px; }
 }
 
@@ -191,5 +293,198 @@
 @keyframes reveal-up { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes pulse-line { 0%, 100% { opacity: .45; transform: scaleX(.9); } 50% { opacity: 1; transform: scaleX(1); } }
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .001ms !important; }
+  *,
+  *::before,
+  *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .001ms !important;
+  }
+}
+
+/* =========================================================
+   CONTINUOUS NEWS TICKER
+   RIGHT → LEFT
+   ========================================================= */
+
+.announcement-ticker {
+  position: relative;
+  width: 100%;
+  height: 56px;
+
+  display: flex;
+  align-items: center;
+
+  overflow: hidden;
+
+  border-top: 1px solid rgba(37, 99, 235, 0.10);
+  border-bottom: 1px solid rgba(37, 99, 235, 0.15);
+
+  background:
+    linear-gradient(
+      90deg,
+      #f8fbff 0%,
+      #ffffff 50%,
+      #f8fbff 100%
+    );
+
+  box-shadow:
+    0 4px 14px rgba(15, 23, 42, 0.08);
+}
+
+
+/* ---------------------------------------------------------
+   VIEWPORT
+   --------------------------------------------------------- */
+
+.announcement-ticker-window {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+
+/* ---------------------------------------------------------
+   MOVING BELT
+   --------------------------------------------------------- */
+
+.announcement-ticker-track {
+  display: flex;
+  align-items: center;
+
+  width: max-content;
+
+  margin: 0;
+  padding: 0;
+  gap: 0;
+
+  animation: announcement-marquee 30s linear infinite;
+
+  will-change: transform;
+}
+
+
+/* ---------------------------------------------------------
+   EACH COPY
+   --------------------------------------------------------- */
+
+.announcement-ticker-group {
+  display: flex;
+  align-items: center;
+
+  flex: 0 0 auto;
+
+  width: max-content;
+
+  margin: 0;
+  padding: 0;
+  gap: 0;
+}
+
+
+/* ---------------------------------------------------------
+   MESSAGE
+   --------------------------------------------------------- */
+
+.announcement-ticker-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex: 0 0 auto;
+
+  gap: 10px;
+
+  padding: 0 28px;
+
+  color: #172554;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  white-space: nowrap;
+}
+
+
+/* ---------------------------------------------------------
+   DIVIDER
+   --------------------------------------------------------- */
+
+.announcement-divider {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 100%;
+
+  margin: 0 28px;
+
+  color: #64748b;
+
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+
+/* ---------------------------------------------------------
+   CONTINUOUS RIGHT → LEFT MOVEMENT
+   --------------------------------------------------------- */
+
+@keyframes announcement-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-33.333333%, 0, 0);
+  }
+}
+
+
+/* ---------------------------------------------------------
+   PAUSE ON HOVER
+   --------------------------------------------------------- */
+
+.announcement-ticker:hover
+.announcement-ticker-track {
+  animation-play-state: paused;
+}
+
+
+/* ---------------------------------------------------------
+   MOBILE
+   --------------------------------------------------------- */
+
+@media (max-width: 768px) {
+
+  .announcement-ticker-item {
+    padding: 10px 20px;
+    font-size: 11px;
+  }
+
+  .announcement-divider {
+    height: 20px;
+    margin-left: 20px;
+  }
+
+  .announcement-ticker-track {
+    animation-duration: 24s;
+  }
+
+}
+
+
+/* ---------------------------------------------------------
+   REDUCED MOTION
+   --------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .announcement-ticker-track {
+    animation: none;
+    transform: none;
+  }
+
 }
