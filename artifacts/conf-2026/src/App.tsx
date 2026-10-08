@@ -1476,17 +1476,17 @@ const committeeRoles: Array<[string, string[]]> = [
   ['Organizing Chairs', [
     'Dr. Banani Basu · NIT Silchar, India',
     'Dr. Jupita Hazarika · NIT Silchar, India',
-    'Dr. Atanu Sahoo · NIT Silchar, India',
+    'Dr. Atanu Sahu · NIT Silchar, India',
     'Dr. Ramanujam E · NIT Silchar, India',
     'Dr. Biswarup Ganguly · NIT Silchar, India'
   ]],
 
   ['General Chairs', [
-    'Prof. Alexandre E Escargueil · Sorbonne University, France',
-    'Prof. Ashish Ghosh · ISI Kolkata, India',
     'Prof. Ivana Budinska · SAS, Slovakia',
-    'Dr. Rahul Gourav, Scientist,  Sorbonne University, France ',
-    'Dr. S K Biswas · NIT Silchar, India'
+    'Prof. Alexandre E Escargueil · Sorbonne University, France',
+    'Prof. Ashish Ghosh · Director, IIIT Bhubaneswar, India',
+    'Prof. B K Roy · NIT Silchar, India ',
+    'Dr. Saroj Kumar Biswas · NIT Silchar, India'
   ]],
 
   ['Organizing Secretary', [
@@ -1541,15 +1541,207 @@ const committeeRoles: Array<[string, string[]]> = [
 
 function Committee() {
   usePageMeta('Organizing Committee', 'Meet the chairs, advisors and technical programme committee for CONF 2026.');
-  const [filter, setFilter] = useState('');
+  
   const technical = [
   'Dr. Sangram Ray · NIT Sikkim',
   'Dr. Deepanjal Shrestha · Associate Professor and Director of the International Relations Center at Pokhara University, Nepal',
   'Dr. Badal Soni · NIT Silchar',
   'Dr. Malaya Dutta Borah · NIT Silchar'
 ];
-  const filtered = technical.filter((member) => member.toLowerCase().includes(filter.toLowerCase()));
-  return <PageShell pageLabel="People behind the programme" showHero={false}><section className="pattern-grid px-5 py-24 lg:px-10 reveal"><div className="mx-auto max-w-[1120px]"><SectionHeading eyebrow="The people behind the programme" title="Organizing committee" children="A distributed team of researchers, hosts and detail-people making room for meaningful exchange." /><div className="mt-12 grid gap-5 md:grid-cols-2">{committeeRoles.map(([role, people], index) => <article key={role} data-testid={`card-committee-role-${index}`} className="card-lift overflow-hidden rounded-2xl border border-blue-900/10 bg-[#f7faff]/75"><div className="pattern-hex border-b border-cyan-300/20 px-5 py-3"><h2 className="font-mono-brand text-xs font-bold uppercase tracking-[.15em] text-cyan-100">{role}</h2></div><div className="grid gap-3 p-5">{(people as string[]).map((person, personIndex) => <p key={`${person}-${personIndex}`} className="flex items-start gap-3 text-sm text-slate-700"><Users size={15} className="mt-0.5 shrink-0 text-blue-600" />{person}</p>)}</div></article>)}</div>
+  
+
+const committeePhotos: Record<string, string> = {
+  // Patron
+  'Prof. Dilip Kumar Baidya': '/committee/dilip.jpg',
+
+  // Organizing Chairs
+  'Dr. Banani Basu': '/committee/Basu.jpg',
+  'Dr. Jupita Hazarika': '/committee/image.png',
+  'Dr. Atanu Sahu': '/committee/sahu.jpg',
+  'Dr. Ramanujam E': '/committee/e.jpg',
+  'Dr. Biswarup Ganguly': '/committee/ganguly.jpg',
+
+  // General Chairs
+  'Prof. Alexandre E Escargueil': '/committee/sorbonne.jpeg',
+  'Prof. Ashish Ghosh': '/committee/ashish.jpg',
+  'Prof. Ivana Budinska': '/committee/sas.jpg',
+  'Prof. B K Roy': '/committee/roy.jpg',
+  'Dr. Saroj Kumar Biswas': '/committee/saroj sir.jpg',
+
+  // Organizing Secretary
+  'Dr. Malaya Dutta Borah': '/committee/malaya.jpg',
+  'Dr. Badal Soni': '/committee/soni.jpg',
+  'Dr. Sugnya Devi K': '/committee/devi.jpg',
+
+  // Convener
+  'Dr. Kedar Nath Das': '/committee/nath.jpg',
+  'Dr. Partha Pakray': '/committee/pakray.png',
+  'Dr. Arnab Nandi': '/committee/nandi.jpg',
+  'Dr. Nabanita Adhikary': '/committee/nabanita.jpg',
+
+  // Publication Chairs
+  'Dr. Sudarshan Sahoo': '/committee/sahoo.jpg',
+  
+
+  // Co-Convener
+  'Dr. Aparajita Dutta': '/committee/dutta.jpg',
+  'Dr. Debbrota Paul Chowdhury': '/committee/paul.jpg',
+
+  // Publicity Chairs
+  'Dr. Dalton Meitei T': '/committee/dalton.jpg',
+  'Dr. Murugan R': '/committee/murugan.jpg',
+  'Dr. Rajarshi Pramanik': '/committee/pra.jpg',
+
+  'Dr. Ripon Patgiri': '/committee/patgiri.jpg',
+
+  // Hospitality Chairs
+  'Dr. Jupitara Hazarika': '/committee/image.png',
+};
+
+
+  return <PageShell pageLabel="People behind the programme" showHero={false}><section className="pattern-grid px-5 py-24 lg:px-10 reveal"><div className="mx-auto max-w-[1120px]"><SectionHeading eyebrow="The people behind the programme" title="Organizing committee" children="A distributed team of researchers, hosts and detail-people making room for meaningful exchange." />
+  
+  <div className="mt-12">
+
+  {/* ===================== */}
+  {/* PATRON */}
+  {/* ===================== */}
+  <div className="flex justify-center">
+    {committeeRoles
+      .filter(([role]) => role === 'Patron')
+      .map(([role, people]) => (
+        <article
+          key={role}
+          data-testid="card-committee-role-patron"
+          className="card-lift w-full max-w-[680px] overflow-hidden rounded-2xl border border-blue-900/10 bg-[#f7faff]/75"
+        >
+          {/* Role heading */}
+          <div className="pattern-hex border-b border-cyan-300/20 px-5 py-4">
+            <h2 className="font-mono-brand text-xs font-bold uppercase tracking-[.15em] text-cyan-100">
+              {role}
+            </h2>
+          </div>
+
+          {/* Patron */}
+          <div className="flex justify-center p-5">
+            {(people as string[]).map((person, personIndex) => {
+              const name = person.split(' · ')[0].trim();
+              const affiliation = person.includes(' · ')
+                ? person.split(' · ').slice(1).join(' · ')
+                : '';
+              const image = committeePhotos[name];
+
+              return (
+                <div
+                  key={`${person}-${personIndex}`}
+                  className="flex w-full max-w-[520px] items-center gap-4 rounded-xl border border-blue-900/10 bg-white/70 p-3 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/40 hover:shadow-lg"
+                >
+                  <div className="h-20 w-20 shrink-0 overflow-hidden rounded-full border-2 border-blue-200 bg-blue-50">
+                    {image ? (
+                      <img
+                        src={image}
+                        alt={name}
+                        className="h-full w-full object-cover"
+                      />
+                    ) : (
+                      <div className="flex h-full w-full items-center justify-center">
+                        <Users size={28} className="text-blue-400" />
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="min-w-0">
+                    <p className="text-sm font-semibold leading-6 text-slate-800">
+                      {name}
+                    </p>
+
+                    <p className="mt-1 text-xs leading-5 text-slate-500">
+                      {affiliation}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </article>
+      ))}
+  </div>
+
+  {/* ============================== */}
+  {/* ALL OTHER COMMITTEE ROLES */}
+  {/* ============================== */}
+  <div className="mt-8 grid gap-6 md:grid-cols-2">
+    {committeeRoles
+      .filter(([role]) => role !== 'Patron')
+      .map(([role, people], index) => (
+        <article
+          key={role}
+          data-testid={`card-committee-role-${index + 1}`}
+          className="card-lift overflow-hidden rounded-2xl border border-blue-900/10 bg-[#f7faff]/75"
+        >
+          {/* Role heading */}
+          <div className="pattern-hex border-b border-cyan-300/20 px-5 py-4">
+            <h2 className="font-mono-brand text-xs font-bold uppercase tracking-[.15em] text-cyan-100">
+              {role}
+            </h2>
+          </div>
+
+          {/* Members */}
+          <div className="grid gap-4 p-5">
+            {(people as string[]).map((person, personIndex) => {
+              const name = person.split(' · ')[0].trim();
+              const affiliation = person.includes(' · ')
+                ? person.split(' · ').slice(1).join(' · ')
+                : '';
+              const image = committeePhotos[name];
+
+              return (
+                <div
+                  key={`${person}-${personIndex}`}
+                  className="group flex items-center gap-4 rounded-xl border border-blue-900/10 bg-white/70 p-3 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/40 hover:shadow-lg"
+                >
+                  {/* Member photo */}
+                  <div className="h-20 w-20 shrink-0 overflow-hidden rounded-full border-2 border-blue-200 bg-blue-50">
+                    {image ? (
+                      <img
+                        src={image}
+                        alt={name}
+                        className="h-full w-full object-cover"
+                      />
+                    ) : (
+                      <div className="flex h-full w-full items-center justify-center">
+                        <Users size={28} className="text-blue-400" />
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Member information */}
+                  <div className="min-w-0">
+                    <p className="text-sm font-semibold leading-6 text-slate-800">
+                      {name}
+                    </p>
+
+                    <p className="mt-1 text-xs leading-5 text-slate-500">
+                      {affiliation}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </article>
+      ))}
+  </div>
+
+</div>
+
+
+
+
+
+
+
+
  {/* ADVISORY COMMITTEE */}
 <div className="mt-24">
   <p className="section-kicker">
@@ -1588,6 +1780,30 @@ function Committee() {
     ))}
   </div>
 </div>
+{/* TECHNICAL PROGRAM COMMITTEE */}
+<div className="mt-24">
+  <p className="section-kicker">
+    A broad technical lens
+  </p>
+
+  <h2 className="mt-3 font-display text-4xl font-semibold">
+    Technical Program Committee
+  </h2>
+
+  <div className="mt-7 grid gap-2 md:grid-cols-2">
+    {technical.map((member, index) => (
+      <div
+        key={`${member}-${index}`}
+        data-testid={`text-technical-member-${index}`}
+        className="rounded-lg border border-blue-900/10 bg-[#f7faff]/70 px-4 py-3 text-sm text-slate-700"
+      >
+        {member}
+      </div>
+    ))}
+  </div>
+</div>
+
+
 {/* GUEST EDITORS */}
 <div className="mt-24">
   <p className="section-kicker">
@@ -1613,8 +1829,10 @@ function Committee() {
       </p>
     ))}
   </div>
-</div>
-  <div className="mt-24"><div className="flex flex-col justify-between gap-5 md:flex-row md:items-end"><div><p className="section-kicker">A broad technical lens</p><h2 className="mt-3 font-display text-4xl font-semibold">Technical program committee</h2></div><div className="relative"><Filter className="absolute left-3 top-3.5 text-blue-600" size={16} /><label className="sr-only" htmlFor="committee-filter">Filter committee</label><input id="committee-filter" data-testid="input-committee-filter" value={filter} onChange={(event) => setFilter(event.target.value)} placeholder="Filter by name or institute" className="w-full rounded-lg border border-blue-900/15 bg-[#f7faff]/80 py-3 pl-10 pr-4 text-sm outline-none focus:border-blue-500 md:w-72" /></div></div><div className="mt-7 grid gap-2 md:grid-cols-2">{filtered.map((member, index) => <div key={`${member}-${index}`} data-testid={`text-technical-member-${index}`} className="rounded-lg border border-blue-900/10 bg-[#f7faff]/70 px-4 py-3 text-sm text-slate-700">{member}</div>)}</div>{filtered.length === 0 && <p className="mt-6 rounded-lg border border-dashed border-blue-900/20 p-6 text-sm text-slate-600">No committee members match that filter.</p>}</div></div></section></PageShell>;
+</div></div>
+
+</section>
+</PageShell>;
 }
 
 const tracks = [
