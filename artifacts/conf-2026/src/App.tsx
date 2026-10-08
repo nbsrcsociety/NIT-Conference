@@ -60,6 +60,16 @@ const heroSlides: HeroSlide[] = [
   pattern: 'pattern-neural',
   image: '/bannerfinal.png',
 },
+// {
+//   kicker: 'I-AM-ComCyS 2027',
+//   title: 'International Conference on AI and ML for Computing and Cyber Security',
+//   detail: '16–18 September 2027',
+//   detailSecond: 'Centre for AI and ML for Applications | NIT Silchar',
+//   note: 'Hybrid Mode',
+//   pattern: 'pattern-neural',
+//   image: '/banner1new.png',
+// },
+
   {
     kicker: 'I-AM-ComCyS 2027',
   title: 'International Conference on AI and ML for Computing and Cyber Security',
@@ -305,8 +315,34 @@ function HeroSlider({ compact = false, pageLabel }: { compact?: boolean; pageLab
 <div className="absolute inset-0 -z-[4] bg-gradient-to-b from-black/10 via-transparent to-[#050b1f]/85" />
 
 
-      <div className="mx-auto flex max-w-[1440px] items-center px-5 py-20 lg:px-4" style={{ minHeight: compact ? 390 : 650 }}>
-        <div className="max-w-3xl reveal">
+      <div
+  className="relative mx-auto flex max-w-[1440px] items-center px-5 py-20 lg:px-4"
+  style={{ minHeight: compact ? 390 : 650 }}
+>
+
+
+
+{/* LEFT-SIDE INSTITUTIONAL LOGOS */}
+<div className="absolute left-[-90px] top-1/2 z-10 hidden -translate-y-1/2 flex-col items-center gap-5 lg:flex">
+  <div className="flex h-55 w-55 items-center justify-center overflow-hidden rounded-full bg-white/90 p-2 shadow-xl ring-2 ring-cyan-300/50">
+    <img
+      src="/nit_logo.png"
+      alt="NIT Silchar Logo"
+      className="h-600 w-200 object-contain"
+    />
+  </div>
+
+  <div className="flex h-55 w-55 items-center justify-center overflow-hidden rounded-full bg-white/90 p-2 shadow-xl ring-2 ring-cyan-300/50">
+    <img
+      src="/conference-logo.jpeg"
+      alt="Centre for AI and ML for Applications Logo"
+      className="h-full w-full object-contain"
+    />
+  </div>
+</div>
+
+
+        <div className="ml-0 max-w-3xl pl-0 reveal lg:ml-36 lg:pl-4">
           {pageLabel && <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-cyan-300/30 bg-slate-950/30 px-3 py-1.5 font-mono-brand text-[10px] uppercase tracking-[.18em] text-cyan-200"><span className="h-1.5 w-1.5 rounded-full bg-cyan-300" /> {pageLabel}</div>}
           
           <p className="eyebrow text-white text-sm md:text-base font-semibold tracking-[.18em]">
