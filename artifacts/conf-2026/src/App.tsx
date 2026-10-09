@@ -130,12 +130,12 @@ function Header() {
       
 
       <header className="glass-nav sticky top-0 z-40 border-b border-cyan-300/20 text-slate-100 shadow-xl shadow-slate-950/10">
-        <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-6 px-5 py-4 lg:px-10">
-
+  <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-6 px-5 py-4 lg:px-10">
+          
           <Link
             href="/"
             data-testid="link-brand"
-            className="group flex min-w-fit items-center gap-3"
+            className="navbar-slide-left group flex min-w-fit items-center gap-3"
             onClick={() => setMenuOpen(false)}
           >
             <img
@@ -155,10 +155,12 @@ function Header() {
             </span>
           </Link>
 
-          <nav
-            aria-label="Main navigation"
-            className="hidden items-center gap-5 xl:flex"
-          >
+          
+<nav
+  aria-label="Main navigation"
+  className="navbar-slide-left hidden items-center gap-5 xl:flex"
+>
+
             {navItems.map((item) => (
               <Link
                 key={item.href}
@@ -193,7 +195,7 @@ function Header() {
             <Link
               href="/registration"
               data-testid="link-header-register"
-              className="button-pattern rounded-lg px-4 py-2 text-[11px] font-extrabold uppercase tracking-[.12em]"
+              className="navbar-slide-right button-pattern rounded-lg px-4 py-2 text-[11px] font-extrabold uppercase tracking-[.12em]"
             >
               Register now
               <ArrowUpRight className="ml-1 inline" size={14} />
@@ -267,7 +269,9 @@ function HeroSlider({ compact = false, pageLabel }: { compact?: boolean; pageLab
   }, [paused]);
   const move = (direction: number) => setActive((current) => (current + direction + heroSlides.length) % heroSlides.length);
   return (
-    <section aria-label="Conference highlights" aria-live="polite" role="region" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)} onFocus={() => setPaused(true)} onBlur={() => setPaused(false)} onKeyDown={(event) => { if (event.key === 'ArrowRight') move(1); if (event.key === 'ArrowLeft') move(-1); }} tabIndex={0} onTouchStart={(event) => setTouchStart(event.touches[0].clientX)} onTouchEnd={(event) => { if (touchStart === null) return; const distance = event.changedTouches[0].clientX - touchStart; if (Math.abs(distance) > 40) move(distance > 0 ? -1 : 1); setTouchStart(null); }} className="hero-gradient relative isolate overflow-hidden border-b border-cyan-300/20 min-h-[650px] md:min-h-[700px]">
+    <section aria-label="Conference highlights" aria-live="polite" role="region" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)} onFocus={() => setPaused(true)} onBlur={() => setPaused(false)} onKeyDown={(event) => { if (event.key === 'ArrowRight') move(1); if (event.key === 'ArrowLeft') move(-1); }} tabIndex={0} onTouchStart={(event) => setTouchStart(event.touches[0].clientX)} onTouchEnd={(event) => { if (touchStart === null) return; const distance = event.changedTouches[0].clientX - touchStart; if (Math.abs(distance) > 40) move(distance > 0 ? -1 : 1); setTouchStart(null); }} 
+className="hero-refresh-animation hero-gradient relative isolate overflow-hidden border-b border-cyan-300/20 min-h-[650px] md:min-h-[700px]">
+
       {heroSlides.map((item, index) => (
   <div
     key={item.title}
@@ -327,7 +331,9 @@ function HeroSlider({ compact = false, pageLabel }: { compact?: boolean; pageLab
 </div>
 
 
-        <div className="ml-0 max-w-3xl pl-0 reveal lg:ml-36 lg:pl-4">
+        
+<div className="ml-0 max-w-3xl pl-0 hero-content-enter lg:ml-36 lg:pl-4">
+
           {pageLabel && <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-cyan-300/30 bg-slate-950/30 px-3 py-1.5 font-mono-brand text-[10px] uppercase tracking-[.18em] text-cyan-200"><span className="h-1.5 w-1.5 rounded-full bg-cyan-300" /> {pageLabel}</div>}
           
           <p className="eyebrow text-white text-sm md:text-base font-semibold tracking-[.18em]">
@@ -920,6 +926,7 @@ function ImportantDates() {
 }
 
 
+
 function ImportantDatesPage() {
   usePageMeta(
     'Important Dates',
@@ -931,10 +938,13 @@ function ImportantDatesPage() {
       pageLabel="Conference Timeline"
       showHero={false}
     >
-      <ImportantDates />
+      <div className="important-dates-page-enter">
+        <ImportantDates />
+      </div>
     </PageShell>
   );
 }
+
 
 function SpeakerCards() {
   const speakers = [
@@ -2706,6 +2716,16 @@ function Router() {
 }
 
 function App() {
+
+useEffect(() => {
+  if ('scrollRestoration' in window.history) {
+    window.history.scrollRestoration = 'manual';
+  }
+
+  window.scrollTo(0, 0);
+}, []);
+
+
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>

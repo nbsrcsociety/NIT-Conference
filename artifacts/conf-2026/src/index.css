@@ -726,3 +726,106 @@
   margin-right: 0;
 }
 
+
+/* Smooth entrance for hero text and buttons on page load */
+.hero-content-enter {
+  animation: hero-content-entrance 1s ease-out both;
+}
+
+@keyframes hero-content-entrance {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-content-enter {
+    animation: none;
+  }
+}
+
+
+@keyframes hero-refresh-enter {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.site-shell main section.hero-refresh-animation {
+  animation: hero-refresh-enter 1.2s ease-out both !important;
+}
+
+
+@keyframes navbar-enter-from-left {
+  from {
+    opacity: 0;
+    transform: translateX(-70px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes navbar-enter-from-right {
+  from {
+    opacity: 0;
+    transform: translateX(70px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.site-shell header .navbar-slide-left {
+  animation: navbar-enter-from-left 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.site-shell header .navbar-slide-right {
+  animation: navbar-enter-from-right 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-shell header .navbar-slide-left,
+  .site-shell header .navbar-slide-right {
+    animation: none !important;
+  }
+}
+
+
+
+
+/* Smooth entrance for the Important Dates page */
+@keyframes important-dates-page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.important-dates-page-enter {
+  animation: important-dates-page-enter 0.9s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .important-dates-page-enter {
+    animation: none !important;
+  }
+}
