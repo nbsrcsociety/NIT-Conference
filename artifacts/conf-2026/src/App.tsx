@@ -712,7 +712,10 @@ function ImportantDates() {
 
   return (
     <section className="bg-white px-5 py-20 lg:px-10">
-      <div className="mx-auto max-w-[1440px]">
+      
+<div className="w-full">
+
+
 
         {/* Heading */}
         <div className="text-center">
@@ -1423,7 +1426,10 @@ function Home() {
   return <PageShell compact={false}>
     <AnnouncementRow />
     <QuickLinksRow />
-    <ImportantDates /><AboutNITAndObjective /><section className="pattern-grid px-5 py-24 lg:px-10">
+    <ImportantDates />
+    <AboutNITAndObjective />
+    <CommitteeMembersMarquee />
+    <section className="pattern-grid px-5 py-24 lg:px-10">
   <div className="mx-auto grid max-w-[1440px] items-center gap-10 lg:grid-cols-[.85fr_1.15fr]">
     <div>
      <SectionHeading
@@ -1592,7 +1598,7 @@ const committeeRoles: Array<[string, string[]]> = [
 
   ['Organizing Chairs', [
     'Dr. Banani Basu · NIT Silchar, India',
-    'Dr. Jupita Hazarika · NIT Silchar, India',
+    'Dr. Jupitara Hazarika · NIT Silchar, India',
     'Dr. Atanu Sahu · NIT Silchar, India',
     'Dr. Ramanujam E · NIT Silchar, India',
     'Dr. Biswarup Ganguly · NIT Silchar, India'
@@ -1635,7 +1641,7 @@ const committeeRoles: Array<[string, string[]]> = [
     'Dr. Dalton Meitei T · Manipur University',
     'Dr. Murugan R · NIT Pondicherry, India',
     'Dr. Biswarup Ganguly · NIT Silchar, India',
-    'Dr. Jupita Hazarika · NIT Silchar, India',
+    'Dr. Jupitara Hazarika · NIT Silchar, India',
     'Dr. Rajarshi Pramanik · NIT Silchar, India'
   ]],
 
@@ -1656,16 +1662,6 @@ const committeeRoles: Array<[string, string[]]> = [
   ]],
 ];
 
-function Committee() {
-  usePageMeta('Organizing Committee', 'Meet the chairs, advisors and technical programme committee for CONF 2026.');
-  
-  const technical = [
-  'Dr. Sangram Ray · NIT Sikkim',
-  'Dr. Deepanjal Shrestha · Associate Professor and Director of the International Relations Center at Pokhara University, Nepal',
-  'Dr. Badal Soni · NIT Silchar',
-  'Dr. Malaya Dutta Borah · NIT Silchar'
-];
-  
 
 const committeePhotos: Record<string, string> = {
   // Patron
@@ -1673,7 +1669,7 @@ const committeePhotos: Record<string, string> = {
 
   // Organizing Chairs
   'Dr. Banani Basu': '/committee/Basu.jpg',
-  'Dr. Jupita Hazarika': '/committee/image.png',
+  'Dr. Jupitara Hazarika': '/committee/image.png',
   'Dr. Atanu Sahu': '/committee/sahu.jpg',
   'Dr. Ramanujam E': '/committee/e.jpg',
   'Dr. Biswarup Ganguly': '/committee/ganguly.jpg',
@@ -1712,8 +1708,136 @@ const committeePhotos: Record<string, string> = {
   'Dr. Ripon Patgiri': '/committee/patgiri.jpg',
 
   // Hospitality Chairs
-  'Dr. Jupitara Hazarika': '/committee/image.png',
+  'Dr. Jupita Hazarika': '/committee/image.png',
 };
+
+
+function CommitteeMembersMarquee() {
+  
+
+const uniqueMembers = new Map<
+  string,
+  {
+    id: string;
+    role: string;
+    name: string;
+    affiliation: string;
+    image?: string;
+  }
+>();
+
+committeeRoles.forEach(([role, people]) => {
+  people.forEach((person) => {
+    const name = person.split(' · ')[0].trim();
+    const key = name.toLowerCase().replace(/\s+/g, ' ');
+
+    if (!uniqueMembers.has(key)) {
+      const affiliation = person.includes(' · ')
+        ? person.split(' · ').slice(1).join(' · ')
+        : '';
+
+      uniqueMembers.set(key, {
+        id: key,
+        role,
+        name,
+        affiliation,
+        image: committeePhotos[name],
+      });
+    }
+  });
+});
+
+const members = Array.from(uniqueMembers.values());
+
+
+
+  const renderMembers = (isDuplicate = false) =>
+    members.map((member, index) => (
+      <article
+        key={`${isDuplicate ? 'duplicate-' : ''}${member.id}-${index}`}
+        className="committee-marquee-card"
+      >
+        <div className="committee-marquee-photo">
+          {member.image ? (
+            <img
+              src={member.image}
+              alt={isDuplicate ? '' : member.name}
+              loading="lazy"
+            />
+          ) : (
+            <Users size={30} className="text-blue-400" />
+          )}
+        </div>
+
+        <div className="min-w-0">
+          <h3 className="committee-marquee-name">
+            {member.name}
+          </h3>
+          {/* <p className="committee-marquee-role">
+            {member.role}
+          </p> */}
+          <p className="committee-marquee-affiliation">
+            {member.affiliation || 'I-AM-ComCyS 2027'}
+          </p>
+        </div>
+      </article>
+    ));
+
+  return (
+    <section className="committee-marquee-section">
+      <div className="mx-auto max-w-[1440px]">
+        <div className="mb-8 text-center">
+          <p className="font-mono-brand text-xs font-bold uppercase tracking-[.18em] text-blue-600">
+            The People Behind the Conference
+          </p>
+          <h2 className="mt-2 font-display text-3xl font-bold text-slate-900 md:text-4xl">
+            Committee Members
+          </h2>
+          <p className="mt-3 text-sm text-slate-600 md:text-base">
+            Meet the researchers and organizers behind I-AM-ComCyS 2027.
+          </p>
+        </div>
+
+        <div
+          className="committee-marquee"
+          aria-label="Scrolling committee members"
+        >
+          <div className="committee-marquee-track">
+            <div className="committee-marquee-group">
+              {renderMembers()}
+            </div>
+
+            <div
+              className="committee-marquee-group"
+              aria-hidden="true"
+            >
+              {renderMembers(true)}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+
+
+
+function Committee() {
+  usePageMeta('Organizing Committee', 'Meet the chairs, advisors and technical programme committee for CONF 2026.');
+  
+  const technical = [
+  'Dr. Sangram Ray · NIT Sikkim',
+  'Dr. Deepanjal Shrestha · Associate Professor and Director of the International Relations Center at Pokhara University, Nepal',
+  'Dr. Badal Soni · NIT Silchar',
+  'Dr. Malaya Dutta Borah · NIT Silchar'
+];
+  
+
+
+
+
+
 
 
   return <PageShell pageLabel="People behind the programme" showHero={false}><section className="pattern-grid px-5 py-24 lg:px-10 reveal"><div className="mx-auto max-w-[1120px]"><SectionHeading eyebrow="The people behind the programme" title="Organizing committee" children="A distributed team of researchers, hosts and detail-people making room for meaningful exchange." />
