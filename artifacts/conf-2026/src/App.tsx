@@ -20,7 +20,6 @@ import {
   ExternalLink,
   FileCheck2,
   FileText,
-  Filter,
   Globe2,
   Mail,
   MapPin,
@@ -128,21 +127,7 @@ function Header() {
 
   return (
     <>
-      <div className="fixed left-40 top-1/4 z-50 flex -translate-y-1/2 flex-col items-center gap-5">
-        {/* 
-        <img
-          src="/nit_logo.jpg"
-          alt="NIT Silchar Logo"
-          className="h-30 w-30 object-contain"
-        />
-
-        <img
-          src="/conference-logo.jpeg"
-          alt="Conference Logo"
-          className="h-30 w-auto object-contain"
-        />
-        */}
-      </div>
+      
 
       <header className="glass-nav sticky top-0 z-40 border-b border-cyan-300/20 text-slate-100 shadow-xl shadow-slate-950/10">
         <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-6 px-5 py-4 lg:px-10">
@@ -570,7 +555,7 @@ function ImportantDates() {
     },
     {
       title: 'Date of Conference',
-      date: '16 September 2027',
+      date: '16-18 September 2027',
     },
   ];
 
@@ -1521,7 +1506,7 @@ const committeeRoles: Array<[string, string[]]> = [
     'Prof. Ivana Budinska · SAS, Slovakia',
     'Prof. Alexandre E Escargueil · Sorbonne University, France',
     'Prof. Ashish Ghosh · Director, IIIT Bhubaneswar, India',
-    'Prof. B K Roy · NIT Silchar, India ',
+    'Dr. Rahul Gourav · Sorbonne University, France ',
     'Dr. Saroj Kumar Biswas · NIT Silchar, India'
   ]],
 
@@ -1601,7 +1586,7 @@ const committeePhotos: Record<string, string> = {
   'Prof. Alexandre E Escargueil': '/committee/sorbonne.jpeg',
   'Prof. Ashish Ghosh': '/committee/ashish.jpg',
   'Prof. Ivana Budinska': '/committee/sas.jpg',
-  'Prof. B K Roy': '/committee/roy.jpg',
+  'Dr. Rahul Gourav': '/committee/rahul.jpg',
   'Dr. Saroj Kumar Biswas': '/committee/saroj sir.jpg',
 
   // Organizing Secretary
