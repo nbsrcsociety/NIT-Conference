@@ -789,13 +789,15 @@
   }
 }
 
+
 .site-shell header .navbar-slide-left {
-  animation: navbar-enter-from-left 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: navbar-enter-from-left 2.5s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 .site-shell header .navbar-slide-right {
-  animation: navbar-enter-from-right 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: navbar-enter-from-right 2.5s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
+
 
 @media (prefers-reduced-motion: reduce) {
   .site-shell header .navbar-slide-left,
