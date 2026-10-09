@@ -1262,45 +1262,45 @@ function PageShell({
   compact?: boolean;
   showHero?: boolean;
 }) {
-  useEffect(() => {
-    const sections = document.querySelectorAll(
-      '.site-shell main > section'
-    );
+  
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.remove('reveal-hidden');
-            entry.target.classList.add('reveal-visible');
-          }
-        });
-      },
-      {
-        threshold: 0.15,
-        rootMargin: '0px 0px -60px 0px',
-      }
-    );
+useEffect(() => {
+  const main = document.querySelector('.site-shell main');
+  if (!main) return;
 
-    sections.forEach((section) => {
-      const rect = section.getBoundingClientRect();
+  const sections = main.querySelectorAll(
+    'section, .page-section, [data-scroll-reveal]'
+  );
 
-      if (rect.top > window.innerHeight) {
-        section.classList.add(
-          'scroll-reveal',
-          'reveal-hidden'
-        );
-      } else {
-        section.classList.add('scroll-reveal');
-      }
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        const section = entry.target;
 
-      observer.observe(section);
-    });
+        if (entry.isIntersecting) {
+          section.classList.remove('reveal-hidden');
+          section.classList.add('reveal-visible');
+        } else {
+          section.classList.remove('reveal-visible');
+          section.classList.add('reveal-hidden');
+        }
+      });
+    },
+    {
+      threshold: 0.05,
+      rootMargin: '0px 0px -30px 0px',
+    }
+  );
 
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
+  sections.forEach((section) => {
+    section.classList.add('scroll-reveal', 'reveal-hidden');
+    observer.observe(section);
+  });
+
+  return () => observer.disconnect();
+}, []);
+
+
 
   return (
     <div id="top" className="site-shell min-h-[100dvh]">
@@ -1325,9 +1325,101 @@ function PageShell({
 }
 
 
+function AboutNITAndObjective() {
+  return (
+    <section className="about-objective-section scroll-reveal relative isolate overflow-hidden bg-slate-100 px-5 py-12 lg:min-h-[620px] lg:px-10 lg:py-10">
+      {/* Faded NIT Silchar campus background */}
+      <div
+        className="absolute inset-0 -z-10 bg-cover bg-center opacity-20"
+        style={{ backgroundImage: "url('/nit-silchar.png')" }}
+      />
+      <div className="absolute inset-0 -z-10 bg-white/50" />
+
+      <div className="mx-auto grid max-w-[1440px] items-center gap-10 lg:min-h-[540px] lg:grid-cols-2 lg:gap-14">
+
+        {/* LEFT: NIT SILCHAR LOGO */}
+        <div className="flex items-center justify-center lg:justify-start">
+          <a
+            href="https://www.nits.ac.in/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Visit NIT Silchar website"
+            className="group flex h-56 w-56 items-center justify-center overflow-hidden rounded-full bg-white/90 p-3 shadow-xl ring-2 ring-blue-200 transition-all duration-300 hover:scale-105 hover:shadow-2xl md:h-64 md:w-64"
+          >
+            <img
+              src="/nit_logo.png"
+              alt="National Institute of Technology Silchar logo"
+              className="h-full w-full scale-[1.12] object-contain transition-transform duration-300 group-hover:scale-[1.2]"
+            />
+          </a>
+        </div>
+
+        {/* RIGHT: ABOUT NIT SILCHAR */}
+        <div className="relative rounded-2xl bg-[#b82e32] p-6 text-white shadow-xl md:p-8">
+          <div className="absolute -bottom-5 left-5 right-0 -z-10 h-5 rounded-b-xl bg-yellow-400" />
+          <div className="absolute -bottom-9 left-10 right-0 -z-20 h-5 rounded-b-xl bg-sky-500" />
+
+          <h2 className="flex items-center gap-3 font-display text-2xl font-bold md:text-3xl">
+            <span className="text-yellow-200">■</span>
+            About NIT Silchar
+          </h2>
+
+          <p className="mt-5 text-justify leading-7 text-white/95 md:text-base">
+            National Institute of Technology Silchar (NIT Silchar) is an
+            Institute of National Importance located in Assam, India.
+            The institute is committed to excellence in technical education,
+            research, and innovation. Its academic environment encourages
+            interdisciplinary collaboration and the development of solutions
+            to emerging scientific and technological challenges.
+          </p>
+
+          <a
+            href="https://www.nits.ac.in/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-5 inline-flex items-center gap-2 text-sm font-bold text-yellow-200 underline underline-offset-4 hover:text-white"
+          >
+            Explore NIT Silchar →
+          </a>
+        </div>
+
+        {/* BOTTOM LEFT: CONFERENCE OBJECTIVE */}
+        <div className="relative rounded-2xl bg-[#2860b3] p-6 text-white shadow-xl md:p-8">
+          <div className="absolute -bottom-5 left-5 right-0 -z-10 h-5 rounded-b-xl bg-yellow-300" />
+          <div className="absolute -bottom-9 left-10 right-0 -z-20 h-5 rounded-b-xl bg-cyan-400" />
+
+          <h2 className="flex items-center gap-3 font-display text-2xl font-bold md:text-3xl">
+            <span className="text-white">■</span>
+            Conference Objective
+          </h2>
+
+          <p className="mt-5 text-justify leading-7 text-white/95 md:text-base">
+            The International Conference on AI and ML for Computing and Cyber Security (I-AM-COMSYS 2027) to provide a global platform for researchers, academicians, industry professionals, and practitioners to exchange knowledge and present innovative research in Artificial Intelligence, Machine Learning, Computing, and Cyber Security. The conference seeks to promote advances in intelligent computing, AI-driven cyber defence, secure and trustworthy AI, privacy-preserving technologies, and emerging computational paradigms. It further aims to foster interdisciplinary collaboration, industry–academia partnerships, technology transfer, and research networking while addressing emerging challenges posed by Generative AI, adversarial threats, autonomous systems, and next-generation digital infrastructures.
+          </p>
+        </div>
+
+        {/* BOTTOM RIGHT: CONFERENCE LOGO */}
+        <div className="flex items-center justify-center">
+          <div className="group flex h-64 w-64 items-center justify-center overflow-hidden rounded-2xl bg-white p-5 shadow-xl ring-1 ring-blue-100 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:ring-blue-300 md:h-72 md:w-72">
+            <img
+              src="/clogo.png"
+              alt="I-AM-ComCyS 2027 conference logo"
+              className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-105"
+            />
+          </div>
+        </div>
+
+      </div>
+    </section>
+  );
+}
+
 function Home() {
   usePageMeta('International Conference on AI & Computing', 'I-AM COMSYS 2027 brings together research across artificial intelligence, computing, IoT and data analytics.');
-  return <PageShell compact={false}><AnnouncementRow /><QuickLinksRow /><ImportantDates /><section className="pattern-grid px-5 py-24 lg:px-10">
+  return <PageShell compact={false}>
+    <AnnouncementRow />
+    <QuickLinksRow />
+    <ImportantDates /><AboutNITAndObjective /><section className="pattern-grid px-5 py-24 lg:px-10">
   <div className="mx-auto grid max-w-[1440px] items-center gap-10 lg:grid-cols-[.85fr_1.15fr]">
     <div>
      <SectionHeading

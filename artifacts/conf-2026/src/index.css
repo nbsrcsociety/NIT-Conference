@@ -185,21 +185,37 @@
   .reveal { animation: reveal-up .7s both; }
 
 
+
+
 .scroll-reveal {
   opacity: 1;
   transform: translateY(0);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
 .scroll-reveal.reveal-hidden {
   opacity: 0;
   transform: translateY(40px);
+  pointer-events: none;
 }
 
 .scroll-reveal.reveal-visible {
   opacity: 1;
   transform: translateY(0);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  pointer-events: auto;
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal,
+  .scroll-reveal.reveal-hidden,
+  .scroll-reveal.reveal-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    pointer-events: auto;
+  }
+}
+
 
 
 
@@ -506,4 +522,26 @@
     transform: none;
   }
 
+}
+
+/* Scroll reveal for About NIT Silchar and Conference Objective */
+.about-objective-section {
+  opacity: 0;
+  transform: translateY(45px);
+  transition:
+    opacity 0.8s ease-out,
+    transform 0.8s ease-out;
+}
+
+.about-objective-section.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-objective-section {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
