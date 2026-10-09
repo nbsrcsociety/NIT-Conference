@@ -1266,11 +1266,14 @@ function PageShell({
 
 useEffect(() => {
   const main = document.querySelector('.site-shell main');
+
   if (!main) return;
 
-  const sections = main.querySelectorAll(
-    'section, .page-section, [data-scroll-reveal]'
-  );
+  // Select sections throughout every page, including sections
+  // nested inside divs, while avoiding nested section animations.
+  const sections = Array.from(
+    main.querySelectorAll('section')
+  ).filter((section) => !section.parentElement?.closest('section'));
 
   const observer = new IntersectionObserver(
     (entries) => {
@@ -1299,6 +1302,7 @@ useEffect(() => {
 
   return () => observer.disconnect();
 }, []);
+
 
 
 
