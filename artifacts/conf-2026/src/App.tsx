@@ -139,7 +139,7 @@ function Header() {
             onClick={() => setMenuOpen(false)}
           >
             <img
-              src="/clogo.png"
+              src="/logo.png"
               alt="I-AM-ComCyS 2027"
               className="h-16 w-16 object-contain"
             />
