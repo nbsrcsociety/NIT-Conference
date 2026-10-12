@@ -975,7 +975,7 @@ function SpeakerCards() {
     },
     {
       name: 'Prof. Ashish Ghosh',
-      affiliation: 'ISI Kolkata (Present Director IIIT Bhubaneswar)',
+      affiliation: 'Director IIIT Bhubaneswar, India',
       image: '/speaker2.jfif',
     },
     {
@@ -2116,7 +2116,7 @@ function Committee() {
       'Prof. Ivana Budinska · SAS, Slovakia',
       'Prof. Atulya Nagar · Liverpool Hope University, UK',
       'Prof. R. Balasubramanian · IIT Roorkee, India',
-      'Prof. Ashish Ghosh · ISI Kolkata (Present Director, IIIT Bhubaneswar)',
+      'Prof. Ashish Ghosh · Director, IIIT Bhubaneswar, India',
       'Prof. Chittaranjan Mandal · IIT Kharagpur',
       'Prof. Animesh Mukherjee · IIT Kharagpur',
       'Prof. Asit Kumar Das · IIEST Shibpur',
