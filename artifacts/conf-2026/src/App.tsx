@@ -322,7 +322,7 @@ className="hero-refresh-animation hero-gradient relative isolate overflow-hidden
   {/* NIT Silchar Logo */}
   <div className="flex h-36 w-36 shrink-0 items-center justify-center overflow-hidden rounded-full border-2 border-cyan-300/60 bg-white p-1 shadow-xl">
     <img
-      src="/clogo.png"
+      src="/nit_logo.png"
       alt="NIT Silchar Logo"
       className="h-full w-full object-contain"
     />
