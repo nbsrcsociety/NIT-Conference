@@ -311,51 +311,34 @@ className="hero-refresh-animation hero-gradient relative isolate overflow-hidden
 
 
 
-{/* LEFT-SIDE INSTITUTIONAL LOGOS */}
-{/* <div
-  key={`logos-${active}`}
-  className="hero-logos hero-logos-enter absolute left-[-90px] top-[86%] z-10 hidden -translate-y-1/2 flex-col items-center gap-5 lg:flex"
->
-  <div className="flex h-55 w-55 items-center justify-center overflow-hidden rounded-full bg-white/90 p-2 shadow-xl ring-2 ring-cyan-300/50">
-   <img
-  src="/nit_logo.png"
-  alt="NIT Silchar Logo"
-  className="h-full w-full scale-[1.10] object-contain"
- />
-  </div>
-
-  <div className="flex h-55 w-55 items-center justify-center overflow-hidden rounded-full bg-white/90 p-2 shadow-xl ring-2 ring-cyan-300/50">
-    <img
-      src="/conference-logo.jpeg"
-      alt="Centre for AI and ML for Applications Logo"
-      className="h-full w-full object-contain"
-    />
-  </div>
-</div> */}
 
 
 
-{/* LEFT-SIDE NIT SILCHAR LOGO */}
+{/* LEFT-SIDE NIT SILCHAR LOGO WITH VERTICAL DIVIDER */}
 <div
   key={`logos-${active}`}
-  className="hero-logos hero-logos-enter absolute left-[15px] top-[37%] z-10 hidden -translate-y-1/2 flex-col items-center gap-5 lg:flex"
+  className="hero-logos hero-logos-enter absolute left-[-68px] top-[55%] z-20 hidden -translate-y-1/2 items-center lg:flex"
 >
-<div className="hero-logos absolute left-[-5px] top-1/2 z-10 hidden -translate-y-1/2 items-center lg:flex">
-  <div className="flex h-36 w-36 items-center justify-center overflow-hidden rounded-full border border-cyan-300/40 bg-white p-1 shadow-lg">
+  {/* NIT Silchar Logo */}
+  <div className="flex h-36 w-36 shrink-0 items-center justify-center overflow-hidden rounded-full border-2 border-cyan-300/60 bg-white p-1 shadow-xl">
     <img
       src="/nit_logo.png"
       alt="NIT Silchar Logo"
       className="h-full w-full object-contain"
     />
   </div>
+
+  {/* Vertical Divider */}
+  <div className="ml-5 h-[200px] w-[4px] shrink-0 rounded-full bg-cyan-300/80 shadow-[0_0_12px_rgba(103,232,249,0.45)]" />
 </div>
-</div>
+
 
 
         
 <div
   key={`content-${active}`}
-  className="ml-0 max-w-3xl pl-0 hero-content-enter lg:ml-36 lg:pl-4"
+ 
+  className="ml-0 max-w-3xl pl-0 hero-content-enter lg:ml-[101px] lg:pl-0"
 >
 
           {pageLabel && <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-cyan-300/30 bg-slate-950/30 px-3 py-1.5 font-mono-brand text-[10px] uppercase tracking-[.18em] text-cyan-200"><span className="h-1.5 w-1.5 rounded-full bg-cyan-300" /> {pageLabel}</div>}
