@@ -312,7 +312,10 @@ className="hero-refresh-animation hero-gradient relative isolate overflow-hidden
 
 
 {/* LEFT-SIDE INSTITUTIONAL LOGOS */}
-<div className="hero-logos absolute left-[-90px] top-[86%] z-10 hidden -translate-y-1/2 flex-col items-center gap-5 lg:flex">
+{/* <div
+  key={`logos-${active}`}
+  className="hero-logos hero-logos-enter absolute left-[-90px] top-[86%] z-10 hidden -translate-y-1/2 flex-col items-center gap-5 lg:flex"
+>
   <div className="flex h-55 w-55 items-center justify-center overflow-hidden rounded-full bg-white/90 p-2 shadow-xl ring-2 ring-cyan-300/50">
    <img
   src="/nit_logo.png"
@@ -328,15 +331,36 @@ className="hero-refresh-animation hero-gradient relative isolate overflow-hidden
       className="h-full w-full object-contain"
     />
   </div>
+</div> */}
+
+
+
+{/* LEFT-SIDE NIT SILCHAR LOGO */}
+<div
+  key={`logos-${active}`}
+  className="hero-logos hero-logos-enter absolute left-[15px] top-[37%] z-10 hidden -translate-y-1/2 flex-col items-center gap-5 lg:flex"
+>
+<div className="hero-logos absolute left-[-5px] top-1/2 z-10 hidden -translate-y-1/2 items-center lg:flex">
+  <div className="flex h-36 w-36 items-center justify-center overflow-hidden rounded-full border border-cyan-300/40 bg-white p-1 shadow-lg">
+    <img
+      src="/nit_logo.png"
+      alt="NIT Silchar Logo"
+      className="h-full w-full object-contain"
+    />
+  </div>
+</div>
 </div>
 
 
         
-<div className="ml-0 max-w-3xl pl-0 hero-content-enter lg:ml-36 lg:pl-4">
+<div
+  key={`content-${active}`}
+  className="ml-0 max-w-3xl pl-0 hero-content-enter lg:ml-36 lg:pl-4"
+>
 
           {pageLabel && <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-cyan-300/30 bg-slate-950/30 px-3 py-1.5 font-mono-brand text-[10px] uppercase tracking-[.18em] text-cyan-200"><span className="h-1.5 w-1.5 rounded-full bg-cyan-300" /> {pageLabel}</div>}
           
-          <p className="eyebrow text-white text-sm md:text-base font-semibold tracking-[.18em]">
+          <p className="inline-block rounded-md border border-cyan-300/40 bg-slate-950/70 px-4 py-2 text-lg font-black uppercase tracking-[0.1em] text-cyan-300 shadow-[0_0_20px_rgba(34,211,238,0.25)] sm:text-xl md:text-2xl">
   {slide.kicker}
 </p>
           <h1
@@ -350,7 +374,7 @@ className="hero-refresh-animation hero-gradient relative isolate overflow-hidden
 >
   {slide.title}
 </h1>
-          <p className="mt-6 max-w-xl font-mono-brand text-sm leading-7 text-white md:text-base font-medium [text-shadow:0_2px_10px_rgba(0,0,0,0.65)]">
+          <p className="mt-3 text-xl font-semibold italic leading-relaxed text-white drop-shadow-md sm:text-xl">
   {slide.detail}
   {slide.detailSecond && (
     <>
@@ -360,12 +384,12 @@ className="hero-refresh-animation hero-gradient relative isolate overflow-hidden
   )}
   
 </p>
-          <p className="mt-3 text-base font-semibold italic text-white md:text-lg [text-shadow:0_2px_10px_rgba(0,0,0,0.65)]">
+          <p className="mt-3 text-xl font-semibold italic leading-relaxed text-white drop-shadow-md sm:text-xl">
   {slide.note}
 </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Link href="/submission" data-testid="link-hero-submit" className="button-pattern rounded-lg px-5 py-3 text-center text-xs font-extrabold uppercase tracking-[.13em]">Submit paper <ArrowRight className="ml-1 inline" size={15} /></Link>
-            <Link href="/registration" data-testid="link-hero-register" className="rounded-lg border border-cyan-200/40 bg-slate-950/35 px-5 py-3 text-center text-xs font-extrabold uppercase tracking-[.13em] text-cyan-100 hover:border-cyan-200 hover:bg-slate-900/50">Register now</Link>
+            <Link href="/registration" data-testid="link-hero-register" className="hero-register-enter rounded-lg border border-cyan-200/40 bg-slate-950/35 px-5 py-3 text-center text-xs font-extrabold uppercase tracking-[.13em] text-cyan-100 hover:border-cyan-200 hover:bg-slate-900/50">Register now</Link>
             <Link href="/call-for-papers" data-testid="link-hero-cfp" className="rounded-lg border border-slate-400/30 bg-slate-950/25 px-5 py-3 text-center text-xs font-extrabold uppercase tracking-[.13em] text-slate-200 hover:border-cyan-300 hover:text-cyan-200">Call for papers</Link>
           </div>
         </div>
@@ -517,31 +541,24 @@ function QuickLinksRow() {
   );
 }
 
+
+
 function ImportantDates() {
   const [today, setToday] = useState(new Date());
 
   useEffect(() => {
-    const timer = window.setInterval(() => {
-      setToday(new Date());
-    }, 60 * 60 * 1000);
+    const updateToday = () => setToday(new Date());
+
+    updateToday();
+
+    const timer = window.setInterval(updateToday, 60 * 1000);
 
     return () => window.clearInterval(timer);
   }, []);
 
-  /*
-   * ============================================================
-   * ONLY EDIT THE DATES BELOW
-   *
-   * Once your actual dates are available, enter them here.
-   *
-   * Example:
-   * date: '15 April 2027'
-   *
-   * Until a date is finalized:
-   * date: 'To be announced'
-   * ============================================================
-   */
-
+  // ============================================================
+  // EDIT YOUR DATES HERE
+  // ============================================================
   const dates = [
     {
       title: 'Paper Submission',
@@ -565,136 +582,136 @@ function ImportantDates() {
     },
   ];
 
-  /*
-   * Convert a written date into a JavaScript Date.
-   * "To be announced" is treated as unavailable.
-   */
-  const parseDate = (value: string) => {
+  // ============================================================
+  // PARSE DATES
+  // Supports:
+  // 16 September 2027
+  // September 16, 2027
+  // 16/09/2027
+  // 16-09-2027
+  // 2027-09-16
+  // 16-18 September 2027 (uses 16 September for calculations)
+  // ============================================================
+  const parseDate = (value: string): Date | null => {
+    const input = value.trim();
+
     if (
-      !value ||
-      value.toLowerCase() === 'to be announced' ||
-      value.toLowerCase() === 'tba'
+      !input ||
+      /^(to be announced|tba|not announced yet)$/i.test(input)
     ) {
       return null;
     }
 
-    const parsed = new Date(value);
+    const monthNames = [
+      'January', 'February', 'March', 'April',
+      'May', 'June', 'July', 'August',
+      'September', 'October', 'November', 'December',
+    ];
 
-    return Number.isNaN(parsed.getTime()) ? null : parsed;
-  };
+    // Date range: use its first day for calculations.
+    const rangeMatch = input.match(
+      /^(\d{1,2})\s*(?:-|–|—|to)\s*(\d{1,2})\s+([A-Za-z]+)\s+(\d{4})$/i
+    );
 
-  /*
-   * Add parsed dates to the timeline.
-   */
-  const datedItems = dates
-    .map((item, index) => ({
-      ...item,
-      index,
-      parsedDate: parseDate(item.date),
-    }))
-    .filter((item) => item.parsedDate !== null);
-
-  /*
-   * ============================================================
-   * LIVE SEGMENT-BY-SEGMENT SLIDER
-   *
-   * The slider moves between two consecutive dates.
-   *
-   * Example:
-   *
-   * Paper Submission
-   *        ↓
-   *        ────────────────
-   *                         ↓
-   *                  Paper Acceptance
-   *
-   * When today's date reaches Paper Acceptance,
-   * the slider starts moving toward Final Submission.
-   * ============================================================
-   */
-
-  let progress = 0;
-
-  if (datedItems.length >= 2) {
-    const now = today.getTime();
-
-    const firstDate = datedItems[0].parsedDate!.getTime();
-
-    const lastDate =
-      datedItems[datedItems.length - 1].parsedDate!.getTime();
-
-    /*
-     * Before the first known date.
-     */
-    if (now <= firstDate) {
-      progress = 0;
+    if (rangeMatch) {
+      return parseDate(
+        `${rangeMatch[1]} ${rangeMatch[3]} ${rangeMatch[4]}`
+      );
     }
 
-    /*
-     * After the final known date.
-     */
-    else if (now >= lastDate) {
-      progress = 100;
-    }
+    let day: number;
+    let month: number;
+    let year: number;
+    let match: RegExpMatchArray | null;
 
-    /*
-     * Find which segment contains today's date.
-     */
-    else {
-      for (let i = 0; i < datedItems.length - 1; i++) {
-        const segmentStart =
-          datedItems[i].parsedDate!.getTime();
+    // DD Month YYYY
+    match = input.match(/^(\d{1,2})\s+([A-Za-z]+)\s+(\d{4})$/);
 
-        const segmentEnd =
-          datedItems[i + 1].parsedDate!.getTime();
+    if (match) {
+      day = Number(match[1]);
+      month = monthNames.findIndex(
+        (name) => name.toLowerCase() === match![2].toLowerCase()
+      );
+      year = Number(match[3]);
+    } else {
+      // DD/MM/YYYY or DD-MM-YYYY
+      match = input.match(/^(\d{1,2})[/-](\d{1,2})[/-](\d{4})$/);
 
-        if (now >= segmentStart && now <= segmentEnd) {
-          /*
-           * Progress inside the current segment.
-           * 0 = beginning of segment
-           * 1 = end of segment
-           */
-          const segmentProgress =
-            (now - segmentStart) /
-            (segmentEnd - segmentStart);
+      if (match) {
+        day = Number(match[1]);
+        month = Number(match[2]) - 1;
+        year = Number(match[3]);
+      } else {
+        // YYYY-MM-DD or YYYY/MM/DD
+        match = input.match(/^(\d{4})[-/](\d{1,2})[-/](\d{1,2})$/);
 
-          /*
-           * Divide the complete timeline equally
-           * between the five milestone positions.
-           */
-          const segmentSize =
-            100 / (datedItems.length - 1);
+        if (match) {
+          year = Number(match[1]);
+          month = Number(match[2]) - 1;
+          day = Number(match[3]);
+        } else {
+          // Month DD, YYYY
+          match = input.match(
+            /^([A-Za-z]+)\s+(\d{1,2}),?\s+(\d{4})$/
+          );
 
-          progress =
-            i * segmentSize +
-            segmentProgress * segmentSize;
+          if (!match) return null;
 
-          break;
+          month = monthNames.findIndex(
+            (name) => name.toLowerCase() === match![1].toLowerCase()
+          );
+          day = Number(match[2]);
+          year = Number(match[3]);
         }
       }
     }
-  }
 
-  progress = Math.max(
-    0,
-    Math.min(100, progress)
-  );
+    if (
+      month < 0 ||
+      month > 11 ||
+      day < 1 ||
+      day > 31 ||
+      year < 1000 ||
+      year > 9999
+    ) {
+      return null;
+    }
 
-  /*
-   * Timeline starts at 5% and ends at 95%.
-   */
-  const progressPosition =
-    5 + progress * 0.9;
+    const parsed = new Date(year, month, day);
 
-  /*
-   * Format the displayed date.
-   */
-  const formatDate = (value: string) => {
-    const parsed = parseDate(value);
+    // Reject impossible dates.
+    if (
+      parsed.getFullYear() !== year ||
+      parsed.getMonth() !== month ||
+      parsed.getDate() !== day
+    ) {
+      return null;
+    }
 
-    if (!parsed) {
+    return parsed;
+  };
+
+  // Display the original range as entered.
+  const formatDate = (value: string): string => {
+    const input = value.trim();
+
+    if (
+      !input ||
+      /^(to be announced|tba|not announced yet)$/i.test(input)
+    ) {
       return 'To be announced';
     }
+
+    const rangePattern =
+      /^\d{1,2}\s*(?:-|–|—|to)\s*\d{1,2}\s+[A-Za-z]+\s+\d{4}$/i;
+
+    if (rangePattern.test(input)) {
+      return input;
+    }
+
+    const parsed = parseDate(input);
+
+    if (!parsed) return 'Invalid date';
 
     return parsed.toLocaleDateString('en-GB', {
       day: 'numeric',
@@ -703,26 +720,82 @@ function ImportantDates() {
     });
   };
 
-  /*
-   * Check whether a milestone has passed.
-   */
+  const getDateOnly = (date: Date) =>
+    new Date(
+      date.getFullYear(),
+      date.getMonth(),
+      date.getDate()
+    ).getTime();
+
+  // Only milestones with valid dates are used for live progress.
+  const datedItems = dates
+    .map((item, index) => ({
+      ...item,
+      index,
+      parsedDate: parseDate(item.date),
+    }))
+    .filter(
+      (item) =>
+        item.parsedDate !== null &&
+        !Number.isNaN(item.parsedDate.getTime())
+    )
+    .sort(
+      (a, b) =>
+        a.parsedDate!.getTime() - b.parsedDate!.getTime()
+    );
+
+  // ============================================================
+  // LIVE POINTER POSITION
+  // Uses the computer's current system date.
+  // ============================================================
+  const now = getDateOnly(today);
+  let progress = 0;
+
+  if (datedItems.length >= 2) {
+    const firstDate = getDateOnly(datedItems[0].parsedDate!);
+    const lastDate = getDateOnly(
+      datedItems[datedItems.length - 1].parsedDate!
+    );
+
+    if (now >= lastDate) {
+      progress = 100;
+    } else if (now > firstDate) {
+      for (let i = 0; i < datedItems.length - 1; i++) {
+        const start = getDateOnly(datedItems[i].parsedDate!);
+        const end = getDateOnly(datedItems[i + 1].parsedDate!);
+
+        if (now >= start && now < end) {
+          const segmentProgress = (now - start) / (end - start);
+
+          progress =
+            ((i + segmentProgress) / (datedItems.length - 1)) * 100;
+
+          break;
+        }
+      }
+    }
+  } else if (datedItems.length === 1) {
+    progress =
+      now >= getDateOnly(datedItems[0].parsedDate!) ? 100 : 0;
+  }
+
+  progress = Math.max(0, Math.min(100, progress));
+
+  // Timeline spans from 5% to 95%.
+  const progressPosition = 5 + progress * 0.9;
+
   const isPassed = (value: string) => {
     const parsed = parseDate(value);
 
-    if (!parsed) {
-      return false;
-    }
-
-    return today.getTime() >= parsed.getTime();
+    return parsed ? now >= getDateOnly(parsed) : false;
   };
+
+  const isDateAvailable = (value: string) =>
+    parseDate(value) !== null;
 
   return (
     <section className="bg-white px-5 py-20 lg:px-10">
-      
-<div className="w-full">
-
-
-
+      <div className="w-full">
         {/* Heading */}
         <div className="text-center">
           <p className="font-mono-brand text-xs font-semibold uppercase tracking-[.18em] text-blue-600">
@@ -730,10 +803,7 @@ function ImportantDates() {
           </p>
 
           <h2 className="mt-3 font-display text-4xl font-semibold tracking-[-.04em] text-slate-900 md:text-5xl">
-            Important{' '}
-            <span className="text-orange-600">
-              Dates
-            </span>
+            Important <span className="text-orange-600">Dates</span>
           </h2>
 
           <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate-600">
@@ -743,98 +813,72 @@ function ImportantDates() {
           <div className="mx-auto mt-5 h-1 w-24 rounded-full bg-gradient-to-r from-blue-700 to-orange-500" />
         </div>
 
-        {/* =====================================================
-            DESKTOP TIMELINE
-        ===================================================== */}
+        {/* DESKTOP TIMELINE */}
         <div className="relative mt-20 hidden lg:block">
-
-          {/* Background timeline */}
+          {/* Background line */}
           <div className="absolute left-[5%] right-[5%] top-8 h-1 rounded-full bg-slate-200" />
 
-          {/* LIVE PROGRESS LINE */}
+          {/* Live progress line */}
           <div
             className="absolute left-[5%] top-8 h-1 rounded-full bg-gradient-to-r from-blue-700 via-cyan-500 to-orange-500 transition-all duration-1000 ease-linear"
-            style={{
-              width: `${progress * 0.9}%`,
-            }}
+            style={{ width: `${progress * 0.9}%` }}
           />
 
-          {/* LIVE MOVING INDICATOR */}
+          {/* Live pointer */}
           <div
             className="absolute top-[1px] z-20 h-[58px] w-[58px] -translate-x-1/2 rounded-full border-4 border-white bg-orange-500 shadow-xl shadow-orange-500/30 transition-all duration-1000 ease-linear"
-            style={{
-              left: `${progressPosition}%`,
-            }}
+            style={{ left: `${progressPosition}%` }}
+            aria-label={`Timeline progress ${Math.round(progress)} percent`}
           >
             <div className="flex h-full w-full items-center justify-center">
               <span className="h-3 w-3 animate-pulse rounded-full bg-white" />
             </div>
           </div>
 
-          {/* Timeline points */}
+          {/* Milestones */}
           <div className="relative grid grid-cols-5 gap-6">
-
             {dates.map((item, index) => {
-              const itemDate = parseDate(item.date);
-
+              const available = isDateAvailable(item.date);
               const passed = isPassed(item.date);
-
-              const isConference =
-                index === dates.length - 1;
+              const isConference = index === dates.length - 1;
 
               return (
                 <article
                   key={item.title}
                   className="relative flex flex-col items-center text-center"
                 >
-
-                  {/* Timeline circle */}
                   <div
                     className={cn(
                       'z-10 flex h-16 w-16 items-center justify-center rounded-full border-4 transition-all duration-700',
-
-                      passed
+                      passed || isConference
                         ? 'border-orange-500 bg-orange-500 text-white shadow-lg shadow-orange-500/25'
-
-                        : isConference
-                          ? 'border-orange-500 bg-orange-500 text-white shadow-lg shadow-orange-500/25'
-
-                          : 'border-slate-200 bg-white text-slate-400'
+                        : 'border-slate-200 bg-white text-slate-400'
                     )}
                   >
                     {isConference ? (
                       <CalendarDays size={23} />
                     ) : passed ? (
-                      <Check
-                        size={24}
-                        strokeWidth={3}
-                      />
+                      <Check size={24} strokeWidth={3} />
                     ) : (
                       <span className="h-3 w-3 rounded-full bg-slate-300" />
                     )}
                   </div>
 
-                  {/* Date */}
                   <p
                     className={cn(
                       'mt-7 min-h-[24px] text-sm font-semibold',
-
                       passed || isConference
                         ? 'text-orange-600'
                         : 'text-slate-500'
                     )}
                   >
-                    {itemDate
-                      ? formatDate(item.date)
-                      : 'To be announced'}
+                    {formatDate(item.date)}
                   </p>
 
-                  {/* Title */}
                   <div
                     className={cn(
                       'mt-4 w-full rounded-2xl border px-5 py-5 transition-all duration-500',
-
-                      passed
+                      available && passed
                         ? 'border-orange-200 bg-orange-50 shadow-sm'
                         : 'border-slate-200 bg-white shadow-sm'
                     )}
@@ -843,87 +887,62 @@ function ImportantDates() {
                       {item.title}
                     </h3>
                   </div>
-
                 </article>
               );
             })}
-
           </div>
         </div>
 
-        {/* =====================================================
-            MOBILE TIMELINE
-        ===================================================== */}
+        {/* MOBILE TIMELINE */}
         <div className="mt-12 lg:hidden">
-
           <div className="relative ml-4 border-l-2 border-slate-200 pl-8">
-
-            {/* Mobile progress */}
             <div
               className="absolute -left-[2px] top-0 w-0.5 rounded-full bg-gradient-to-b from-blue-700 via-cyan-500 to-orange-500 transition-all duration-1000"
-              style={{
-                height: `${progress}%`,
-              }}
+              style={{ height: `${progress}%` }}
             />
 
             <div className="grid gap-8">
-
               {dates.map((item, index) => {
                 const passed = isPassed(item.date);
-
-                const isConference =
-                  index === dates.length - 1;
+                const isConference = index === dates.length - 1;
 
                 return (
-                  <article
-                    key={item.title}
-                    className="relative"
-                  >
-
-                    {/* Point */}
+                  <article key={item.title} className="relative">
                     <div
                       className={cn(
                         'absolute -left-[49px] top-1 flex h-8 w-8 items-center justify-center rounded-full border-4 border-white',
-
                         passed || isConference
                           ? 'bg-orange-500'
                           : 'bg-slate-300'
                       )}
                     />
 
-                    {/* Date */}
                     <p
                       className={cn(
                         'text-sm font-semibold',
-
                         passed || isConference
                           ? 'text-orange-600'
                           : 'text-slate-500'
                       )}
                     >
-                      {parseDate(item.date)
-                        ? formatDate(item.date)
-                        : 'To be announced'}
+                      {formatDate(item.date)}
                     </p>
 
-                    {/* Title */}
                     <h3 className="mt-1 font-display text-xl font-semibold text-slate-800">
                       {item.title}
                     </h3>
-
                   </article>
                 );
               })}
-
             </div>
           </div>
-
         </div>
-
       </div>
     </section>
   );
 }
+
+
 
 
 
@@ -1354,34 +1373,37 @@ function AboutNITAndObjective() {
 
       <div className="mx-auto grid max-w-[1440px] items-center gap-10 lg:min-h-[540px] lg:grid-cols-2 lg:gap-14">
 
-        {/* LEFT: NIT SILCHAR LOGO */}
-        <div className="flex items-center justify-center lg:justify-start">
-          <a
-            href="https://www.nits.ac.in/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Visit NIT Silchar website"
-            className="group flex h-56 w-56 items-center justify-center overflow-hidden rounded-full bg-white/90 p-3 shadow-xl ring-2 ring-blue-200 transition-all duration-300 hover:scale-105 hover:shadow-2xl md:h-64 md:w-64"
-          >
-            <img
-              src="/nit_logo.png"
-              alt="National Institute of Technology Silchar logo"
-              className="h-full w-full scale-[1.12] object-contain transition-transform duration-300 group-hover:scale-[1.2]"
-            />
-          </a>
-        </div>
+
+{/* LEFT: NIT SILCHAR LOGO */}
+<div className="flex items-center justify-center lg:row-span-1 lg:h-full lg:justify-center">
+  <a
+    href="https://www.nits.ac.in/"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Visit NIT Silchar website"
+    className="group flex h-56 w-56 items-center justify-center overflow-hidden rounded-full bg-white/90 p-3 shadow-xl ring-2 ring-blue-200 transition-all duration-300 hover:scale-105 hover:shadow-2xl md:h-64 md:w-64"
+  >
+    <img
+      src="/nit_logo.png"
+      alt="National Institute of Technology Silchar logo"
+      className="h-full w-full scale-[1.12] object-contain transition-transform duration-300 group-hover:scale-[1.2]"
+    />
+  </a>
+</div>
+
+
 
         {/* RIGHT: ABOUT NIT SILCHAR */}
         <div className="relative rounded-2xl bg-[#b82e32] p-6 text-white shadow-xl md:p-8">
           <div className="absolute -bottom-5 left-5 right-0 -z-10 h-5 rounded-b-xl bg-yellow-400" />
           <div className="absolute -bottom-9 left-10 right-0 -z-20 h-5 rounded-b-xl bg-sky-500" />
 
-          <h2 className="flex items-center gap-3 font-display text-2xl font-bold md:text-3xl">
+          <h1 className="flex items-center gap-3 font-display text-2xl font-bold md:text-3xl">
             <span className="text-yellow-200">■</span>
             About NIT Silchar
-          </h2>
+          </h1>
 
-          <p className="mt-5 text-justify leading-7 text-white/95 md:text-base">
+          <p className="mt-5 text-justify text-lg leading-8 text-white/95 md:text-xl md:leading-9">
             National Institute of Technology Silchar (NIT Silchar) is an
             Institute of National Importance located in Assam, India.
             The institute is committed to excellence in technical education,
@@ -1405,25 +1427,97 @@ function AboutNITAndObjective() {
           <div className="absolute -bottom-5 left-5 right-0 -z-10 h-5 rounded-b-xl bg-yellow-300" />
           <div className="absolute -bottom-9 left-10 right-0 -z-20 h-5 rounded-b-xl bg-cyan-400" />
 
-          <h2 className="flex items-center gap-3 font-display text-2xl font-bold md:text-3xl">
+          <h1 className="flex items-center gap-3 font-display text-2xl font-bold md:text-3xl">
             <span className="text-white">■</span>
             Conference Objective
-          </h2>
+          </h1>
 
-          <p className="mt-5 text-justify leading-7 text-white/95 md:text-base">
+          <p className="mt-5 text-justify text-lg leading-8 text-white/95 md:text-xl md:leading-9">
             The International Conference on AI and ML for Computing and Cyber Security (I-AM-COMSYS 2027) to provide a global platform for researchers, academicians, industry professionals, and practitioners to exchange knowledge and present innovative research in Artificial Intelligence, Machine Learning, Computing, and Cyber Security. The conference seeks to promote advances in intelligent computing, AI-driven cyber defence, secure and trustworthy AI, privacy-preserving technologies, and emerging computational paradigms. It further aims to foster interdisciplinary collaboration, industry–academia partnerships, technology transfer, and research networking while addressing emerging challenges posed by Generative AI, adversarial threats, autonomous systems, and next-generation digital infrastructures.
           </p>
         </div>
 
         {/* BOTTOM RIGHT: CONFERENCE LOGO */}
-        <div className="flex items-center justify-center">
-          <div className="group flex h-64 w-64 items-center justify-center overflow-hidden rounded-2xl bg-white p-5 shadow-xl ring-1 ring-blue-100 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:ring-blue-300 md:h-72 md:w-72">
-            <img
-              src="/clogo.png"
-              alt="I-AM-ComCyS 2027 conference logo"
-              className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-105"
-            />
-          </div>
+       {/* BOTTOM RIGHT: CONFERENCE LOGO */}
+<div className="flex items-center justify-center">
+  <div className="group flex h-50 w-50 items-center justify-center overflow-hidden rounded-2xl bg-white p-5 shadow-xl ring-1 ring-blue-100 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:ring-blue-300 md:h-80 md:w-80">
+    <img
+      src="/clogo.png"
+      alt="I-AM-ComCyS 2027 conference logo"
+      className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-105"
+    />
+  </div>
+</div>
+
+      </div>
+    </section>
+  );
+}
+
+
+
+
+
+
+function Aboutcaimla() {
+  return (
+    <section className="about-objective-section scroll-reveal relative isolate overflow-hidden bg-sky-50 px-5 py-12 lg:min-h-[620px] lg:px-10 lg:py-10">
+      {/* Faded NIT Silchar campus background */}
+      <div
+        className="absolute inset-0 -z-10 bg-cover bg-center opacity-20"
+        style={{ backgroundImage: "url('/cse-department.jpg')" }}
+      />
+      <div className="absolute inset-0 -z-10 bg-white/50" />
+
+      <div className="mx-auto grid max-w-[1600px] items-center gap-4 lg:min-h-[540px] lg:grid-cols-[0.8fr_1.4fr] lg:gap-2">
+
+        {/* CAIMLA Logo */}
+      <div className="flex items-center justify-center lg:row-span-1 lg:h-full lg:justify-center">
+  <div className="group flex h-70 w-70 items-center justify-center overflow-hidden rounded-full bg-white/90 p-3 shadow-xl ring-2 ring-blue-200 transition-all duration-300 hover:scale-105 hover:shadow-2xl md:h-86 md:w-86">
+    <img
+      src="/conference-logo.jpeg"
+      alt="CAIMLA Logo"
+      className="h-full w-full scale-[1.01] object-contain transition-transform duration-300 group-hover:scale-[1.03]"
+    />
+  </div>
+</div>
+
+
+        {/* CAIMLA Information Card */}
+        <div className="relative rounded-2xl bg-[#123B68] p-5 text-white shadow-xl md:p-6">
+          <div className="absolute -bottom-4 left-4 right-0 -z-10 h-4 rounded-b-xl bg-cyan-400" />
+          <div className="absolute -bottom-7 left-8 right-0 -z-20 h-4 rounded-b-xl bg-sky-300" />
+
+          <h1 className="flex items-center gap-3 font-display text-2xl font-bold md:text-3xl">
+            <span className="text-cyan-300">■</span>
+            About CAIMLA
+          </h1>
+
+          <p className="mt-3 text-base text-justify leading-6 text-white/95 md:text-lg md:leading-8">
+            The Centre for AI and ML for Applications at the National Institute of Technology Silchar (NIT Silchar) established in 2023 aims to advance research, innovation and technology development in Artificial Intelligence (AI) and Machine Learning (ML). The centre seeks to establish a dynamic research ecosystem that fosters interdisciplinary collaboration, strengthens fundamental research and promotes the practical application of AI and ML techniques to address emerging challenges in engineering, science and society.
+          </p>
+
+          <h3 className="mt-4 text-base font-bold text-cyan-200 md:text-lg">
+            Key Objectives:
+          </h3>
+
+          <ul className="mt-3 text-base text-justify list-disc space-y-1 pl-5 text-sm leading-6 text-white/95 md:text-lg md:leading-8">
+            <li>
+              <strong>Promote Interdisciplinary Research:</strong> To foster interdisciplinary and collaborative research by bringing together researchers from diverse engineering, scientific and technological domains to explore innovative AI and ML driven solutions.
+            </li>
+            <li>
+              <strong>Strengthen Fundamental Research:</strong> To encourage fundamental and theoretical research in AI and ML, facilitating the development of novel algorithms, computational models and methodologies that advance the state of the art.
+            </li>
+            <li>
+              <strong>Enable Practical Applications:</strong> To facilitate the development, implementation and deployment of AI and ML based technologies across emerging engineering fields to address complex real-world problems and improve the efficiency, reliability and sustainability of technological systems.
+            </li>
+            <li>
+              <strong>Facilitate Access to Research Resources:</strong> To provide researchers, academicians, students and industry professionals with access to advanced computational infrastructure, specialized tools and unique datasets to support high-quality research and innovation.
+            </li>
+            <li>
+              <strong>Foster Academic–Industry Collaboration:</strong> To establish and strengthen collaborations with academic institutions, industries and research organizations to promote high-quality research, knowledge exchange, technology transfer and the development of impactful solutions to contemporary challenges.
+            </li>
+          </ul>
         </div>
 
       </div>
@@ -1431,13 +1525,19 @@ function AboutNITAndObjective() {
   );
 }
 
+
+
+
+
 function Home() {
   usePageMeta('International Conference on AI & Computing', 'I-AM COMSYS 2027 brings together research across artificial intelligence, computing, IoT and data analytics.');
   return <PageShell compact={false}>
     <AnnouncementRow />
     <QuickLinksRow />
-    <ImportantDates />
+    
     <AboutNITAndObjective />
+    <Aboutcaimla/>
+    <ImportantDates />
     <CommitteeMembersMarquee />
     <section className="pattern-grid px-5 py-24 lg:px-10">
   <div className="mx-auto grid max-w-[1440px] items-center gap-10 lg:grid-cols-[.85fr_1.15fr]">
@@ -1606,6 +1706,16 @@ const committeeRoles: Array<[string, string[]]> = [
     'Prof. Dilip Kumar Baidya · Director, NIT Silchar, India'
   ]],
 
+
+['General Chairs', [
+  'Prof. Alexandre E Escargueil · Sorbonne University, France',
+  'Prof. Ashish Ghosh · Director, IIIT Bhubaneswar, India',
+    'Prof. Ivana Budinska · SAS, Slovakia',
+    'Dr. Rahul Gourav · Sorbonne University, France ',
+    'Dr. Saroj Kumar Biswas · NIT Silchar, India'
+  ]],
+
+
   ['Organizing Chairs', [
     'Dr. Banani Basu · NIT Silchar, India',
     'Dr. Jupitara Hazarika · NIT Silchar, India',
@@ -1614,13 +1724,7 @@ const committeeRoles: Array<[string, string[]]> = [
     'Dr. Biswarup Ganguly · NIT Silchar, India'
   ]],
 
-  ['General Chairs', [
-    'Prof. Ivana Budinska · SAS, Slovakia',
-    'Prof. Alexandre E Escargueil · Sorbonne University, France',
-    'Prof. Ashish Ghosh · Director, IIIT Bhubaneswar, India',
-    'Dr. Rahul Gourav · Sorbonne University, France ',
-    'Dr. Saroj Kumar Biswas · NIT Silchar, India'
-  ]],
+  
 
   ['Organizing Secretary', [
     'Dr. Malaya Dutta Borah · NIT Silchar, India',
