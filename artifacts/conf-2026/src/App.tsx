@@ -2441,12 +2441,13 @@ function Registration() {
     'Registration fees, payment steps and participant notes for I-AM-ComCyS 2027.'
   );
 
-  const fees = [
-    ['Author-student', '8,000', '7,000', '120', '100'],
-    ['Author-Academician', '9,000', '8,000', '140', '130'],
-    ['Author-Industry person', '10,000', '9,000', '150', '140'],
-    ['Listener / Accompanying Person', '5,000', '5,000', '80', '70'],
-  ];
+  
+const fees = [
+  ['Author-student', '8,000', '100'],
+  ['Author-Academician', '9,000', '130'],
+  ['Author-Industry person', '10,000', '140'],
+  ['Listener / Accompanying Person', '5,000', '70'],
+];
 
   return (
     <PageShell pageLabel="Make your place in the room" showHero={false}>
@@ -2459,95 +2460,47 @@ function Registration() {
             children="Every registration supports the room around the paper: thoughtful review, a welcoming programme and the shared infrastructure of the conference."
           />
 
-          <div className="mt-10 overflow-x-auto rounded-2xl border border-blue-900/15 bg-[#f7faff]/75">
-            <table className="w-full min-w-[900px] border-collapse text-center text-sm">
-              <thead className="pattern-hex text-slate-50">
-                <tr>
-                  <th
-                    rowSpan={2}
-                    className="px-5 py-4 font-mono-brand text-[10px] uppercase tracking-[.14em]"
-                  >
-                    Category
-                  </th>
+          ```tsx
+<div className="mt-10 overflow-x-auto rounded-2xl border border-blue-900/15 bg-[#f7faff]/75">
+  <table className="w-full min-w-[700px] border-collapse text-center text-sm">
+    <thead className="pattern-hex text-slate-50">
+      <tr>
+        <th className="px-5 py-4 font-mono-brand text-sm font-bold uppercase tracking-[.14em]">
+          Category
+        </th>
+        <th className="px-5 py-4 font-mono-brand text-sm font-bold uppercase tracking-[.14em]">
+          Indian (INR)
+        </th>
+        <th className="px-5 py-4 font-mono-brand text-sm font-bold uppercase tracking-[.14em]">
+          Foreigner (US$)
+        </th>
+      </tr>
+    </thead>
 
-                  <th
-                    colSpan={2}
-                    className="px-5 py-4 font-mono-brand text-[10px] uppercase tracking-[.14em]"
-                  >
-                    Indian (INR)
-                  </th>
-
-                  <th
-                    colSpan={2}
-                    className="px-5 py-4 font-mono-brand text-[10px] uppercase tracking-[.14em]"
-                  >
-                    Foreigner (US$)
-                  </th>
-                </tr>
-
-                <tr>
-                  <th className="border-t border-cyan-200/20 px-5 py-3 font-mono-brand text-[10px] uppercase tracking-[.1em]">
-                    IEEE Non-membership
-                  </th>
-
-                  <th className="border-t border-cyan-200/20 px-5 py-3 font-mono-brand text-[10px] uppercase tracking-[.1em]">
-                    IEEE Membership
-                  </th>
-
-                  <th className="border-t border-cyan-200/20 px-5 py-3 font-mono-brand text-[10px] uppercase tracking-[.1em]">
-                    IEEE Non-membership
-                  </th>
-
-                  <th className="border-t border-cyan-200/20 px-5 py-3 font-mono-brand text-[10px] uppercase tracking-[.1em]">
-                    IEEE Membership
-                  </th>
-                </tr>
-              </thead>
-
-              <tbody>
-                {fees.map(
-                  (
-                    [
-                      category,
-                      indianNonMember,
-                      indianMember,
-                      foreignNonMember,
-                      foreignMember,
-                    ],
-                    index
-                  ) => (
-                    <tr
-                      key={category}
-                      className={cn(
-                        'border-b border-blue-900/10',
-                        index % 2 === 0 && 'bg-blue-100/25'
-                      )}
-                    >
-                     <td className="px-5 py-4 text-left text-lg font-semibold text-blue-900">
-  {category}
-</td>
-
-<td className="px-5 py-4 font-mono-brand text-lg font-normal text-slate-700">
-  {indianNonMember}
-</td>
-
-<td className="px-5 py-4 font-mono-brand text-lg font-normal text-slate-700">
-  {indianMember}
-</td>
-
-<td className="px-5 py-4 font-mono-brand text-lg font-normal text-slate-700">
-  {foreignNonMember}
-</td>
-
-<td className="px-5 py-4 font-mono-brand text-lg font-normal text-slate-700">
-  {foreignMember}
-</td>
-                    </tr>
-                  )
-                )}
-              </tbody>
-            </table>
-          </div>
+    <tbody>
+      {fees.map(([category, indianFees, foreignFees], index) => (
+        <tr
+          key={category}
+          className={cn(
+            'border-b border-blue-900/10',
+            index % 2 === 0 && 'bg-blue-100/25'
+          )}
+        >
+          <td className="px-5 py-4 text-left text-lg font-semibold text-blue-900">
+            {category}
+          </td>
+          <td className="px-5 py-4 font-mono-brand text-lg font-normal text-slate-700">
+            {indianFees}
+          </td>
+          <td className="px-5 py-4 font-mono-brand text-lg font-normal text-slate-700">
+            {foreignFees}
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+```
 
         </div>
       </section>
