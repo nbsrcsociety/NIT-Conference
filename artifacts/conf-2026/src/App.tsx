@@ -2441,7 +2441,7 @@ const fees = [
             children="Every registration supports the room around the paper: thoughtful review, a welcoming programme and the shared infrastructure of the conference."
           />
 
-          ```tsx
+          
 <div className="mt-10 overflow-x-auto rounded-2xl border border-blue-900/15 bg-[#f7faff]/75">
   <table className="w-full min-w-[700px] border-collapse text-center text-sm">
     <thead className="pattern-hex text-slate-50">
