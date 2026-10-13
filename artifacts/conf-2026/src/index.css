@@ -941,3 +941,13 @@ color: #647fa8;
     animation: none;
   }
 }
+
+
+
+/* Unified conference committee page theme */
+.committee-page {
+  background:
+    radial-gradient(ellipse at 10% 0%, rgba(103, 232, 249, 0.16), transparent 35%),
+    radial-gradient(ellipse at 90% 30%, rgba(59, 130, 246, 0.10), transparent 40%),
+    linear-gradient(180deg, #f4f8ff 0%, #eaf2ff 55%, #f8fbff 100%);
+}

@@ -1996,7 +1996,7 @@ function Committee() {
 
 
 
-  return <PageShell pageLabel="People behind the programme" showHero={false}><section className="pattern-grid px-5 py-24 lg:px-10 reveal"><div className="mx-auto max-w-[1120px]"><SectionHeading eyebrow="The people behind the programme" title="Organizing committee" children="A distributed team of researchers, hosts and detail-people making room for meaningful exchange." />
+  return <PageShell pageLabel="People behind the programme" showHero={false}><section className="committee-page pattern-grid px-5 py-24 lg:px-10 reveal"><div className="mx-auto max-w-[1120px]"><SectionHeading eyebrow="The people behind the programme" title="Organizing committee" children="A distributed team of researchers, hosts and detail-people making room for meaningful exchange." />
   
   <div className="mt-12">
 
@@ -2014,7 +2014,7 @@ function Committee() {
         >
           {/* Role heading */}
           <div className="pattern-hex border-b border-cyan-300/20 px-5 py-4">
-            <h2 className="font-mono-brand text-xs font-bold uppercase tracking-[.15em] text-cyan-100">
+            <h2 className="font-mono-brand text-sm font-extrabold uppercase tracking-[.16em] text-white md:text-base">
               {role}
             </h2>
           </div>
@@ -2048,11 +2048,11 @@ function Committee() {
                   </div>
 
                   <div className="min-w-0">
-                    <p className="text-sm font-semibold leading-6 text-slate-800">
+                    <p className="text-base font-bold leading-snug text-slate-900 md:text-lg">
                       {name}
                     </p>
 
-                    <p className="mt-1 text-xs leading-5 text-slate-500">
+                    <p className="mt-1 text-sm font-semibold leading-snug text-blue-700 md:text-base">
                       {affiliation}
                     </p>
                   </div>
@@ -2114,11 +2114,11 @@ function Committee() {
 
                   {/* Member information */}
                   <div className="min-w-0">
-                    <p className="text-sm font-semibold leading-6 text-slate-800">
+                    <p className="text-base font-bold leading-snug text-slate-900 md:text-lg">
                       {name}
                     </p>
 
-                    <p className="mt-1 text-xs leading-5 text-slate-500">
+                    <p className="mt-1 text-sm font-semibold leading-snug text-blue-700 md:text-base">
                       {affiliation}
                     </p>
                   </div>
@@ -2149,7 +2149,8 @@ function Committee() {
     Advisory committee
   </h2>
 
-  <div className="pattern-mesh mt-7 grid gap-3 rounded-2xl border border-cyan-300/20 p-6 text-sm text-slate-200 md:grid-cols-2">
+  <div className="mt-7 grid gap-3 rounded-2xl border border-cyan-200/80 bg-gradient-to-r from-white via-[#f0f7ff] to-[#e1f4ff] p-6 text-base font-semibold leading-relaxed text-[#17346b] shadow-[0_5px_14px_rgba(30,64,175,0.10)] md:grid-cols-2">
+  
     {[
       'Prof. P. N. Suganthan · Qatar University, Qatar',
       'Prof. Kusum Deep · IIT Roorkee, India',
@@ -2170,13 +2171,23 @@ function Committee() {
     ].map((person, personIndex) => (
       <p
         key={`${person}-${personIndex}`}
-        className="border-b border-cyan-200/15 pb-3"
+        className="border-b border-cyan-200/80 pb-3"
       >
         {person}
       </p>
     ))}
   </div>
 </div>
+
+
+
+
+
+
+
+
+
+
 {/* TECHNICAL PROGRAM COMMITTEE */}
 <div className="mt-24">
   <p className="section-kicker">
@@ -2192,8 +2203,8 @@ function Committee() {
       <div
         key={`${member}-${index}`}
         data-testid={`text-technical-member-${index}`}
-        className="rounded-lg border border-blue-900/10 bg-[#f7faff]/70 px-4 py-3 text-sm text-slate-700"
-      >
+       className="rounded-xl border border-cyan-200/80 bg-gradient-to-r from-white via-[#f0f7ff] to-[#e1f4ff] px-4 py-4 text-base font-semibold leading-relaxed text-[#17346b] shadow-[0_5px_14px_rgba(30,64,175,0.10)] transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400 hover:shadow-[0_10px_22px_rgba(30,64,175,0.18)]"
+       >
         {member}
       </div>
     ))}
@@ -2211,7 +2222,7 @@ function Committee() {
     Guest Editors
   </h2>
 
-  <div className="pattern-mesh mt-7 grid gap-3 rounded-2xl border border-cyan-300/20 p-6 text-sm text-slate-200 md:grid-cols-2">
+  <div className="mt-7 grid gap-x-5 gap-y-2 rounded-2xl border border-cyan-200/80 bg-gradient-to-r from-white via-[#f0f7ff] to-[#e1f4ff] p-6 text-base font-semibold leading-relaxed text-[#17346b] shadow-[0_5px_14px_rgba(30,64,175,0.10)] md:grid-cols-2">
     {[
       'Prof. Sudan Jha · Kathmandu University, Nepal',
       'Prof. Evizal Abdul Kadir · Universitas Islam Riau (UIR), Indonesia',
@@ -2220,7 +2231,7 @@ function Committee() {
     ].map((person, personIndex) => (
       <p
         key={`${person}-${personIndex}`}
-        className="border-b border-cyan-200/15 pb-3"
+        className="border-b border-cyan-200/80 pb-3"
       >
         {person}
       </p>
