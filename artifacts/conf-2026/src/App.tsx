@@ -146,7 +146,7 @@ function Header() {
 
             <span className="leading-none">
               <span className="block font-display text-xl font-bold tracking-tight">
-                I-AM-COMSYS <span className="text-cyan-300">2027</span>
+                I-AM-ComCyS <span className="text-cyan-300">2027</span>
               </span>
 
               <span className="mt-1 block font-mono-brand text-[9px] uppercase tracking-[.23em] text-slate-300">
@@ -1041,13 +1041,13 @@ function Footer() {
             <div className="flex items-center gap-4">
               <img
                 src="/clogo.png"
-                alt="I-AM-COMSYS 2027"
+                alt="I-AM-ComCyS 2027"
                 className="h-16 w-16 object-contain"
               />
 
               <div>
                 <h2 className="font-display text-xl font-bold">
-                  I-AM-COMSYS <span className="text-cyan-300">2027</span>
+                  I-AM-ComCyS <span className="text-cyan-300">2027</span>
                 </h2>
 
                 <p className="mt-1 font-mono-brand text-[9px] uppercase tracking-[.16em] text-slate-400">
@@ -1416,7 +1416,7 @@ function AboutNITAndObjective() {
           </h1>
 
           <p className="mt-5 text-justify text-lg leading-8 text-white/95 md:text-xl md:leading-9">
-            The International Conference on AI and ML for Computing and Cyber Security (I-AM-COMSYS 2027) to provide a global platform for researchers, academicians, industry professionals, and practitioners to exchange knowledge and present innovative research in Artificial Intelligence, Machine Learning, Computing, and Cyber Security. The conference seeks to promote advances in intelligent computing, AI-driven cyber defence, secure and trustworthy AI, privacy-preserving technologies, and emerging computational paradigms. It further aims to foster interdisciplinary collaboration, industry–academia partnerships, technology transfer, and research networking while addressing emerging challenges posed by Generative AI, adversarial threats, autonomous systems, and next-generation digital infrastructures.
+            The International Conference on AI and ML for Computing and Cyber Security (I-AM-ComCyS 2027) to provide a global platform for researchers, academicians, industry professionals, and practitioners to exchange knowledge and present innovative research in Artificial Intelligence, Machine Learning, Computing, and Cyber Security. The conference seeks to promote advances in intelligent computing, AI-driven cyber defence, secure and trustworthy AI, privacy-preserving technologies, and emerging computational paradigms. It further aims to foster interdisciplinary collaboration, industry–academia partnerships, technology transfer, and research networking while addressing emerging challenges posed by Generative AI, adversarial threats, autonomous systems, and next-generation digital infrastructures.
           </p>
         </div>
 
@@ -1513,7 +1513,7 @@ function Aboutcaimla() {
 
 
 function Home() {
-  usePageMeta('International Conference on AI & Computing', 'I-AM COMSYS 2027 brings together research across artificial intelligence, computing, IoT and data analytics.');
+  usePageMeta('International Conference on AI & Computing', 'I-AM ComCyS 2027 brings together research across artificial intelligence, computing, IoT and data analytics.');
   return <PageShell compact={false}>
     <AnnouncementRow />
     <QuickLinksRow />
