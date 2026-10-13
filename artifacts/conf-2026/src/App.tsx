@@ -1196,7 +1196,7 @@ function Footer() {
 
 <div className="mt-3 rounded-xl border border-cyan-200/20 bg-slate-950/20 px-4 py-4">
   <p className="font-display text-lg font-semibold text-slate-200">
-    Proposed for Procedia Computer Science  (Elsevier) — To be approval.
+    Proposed for publication in Procedia Computer Science (Elsevier), To be approval.
   </p>
 
   
@@ -1921,7 +1921,7 @@ const members = Array.from(uniqueMembers.values());
 
 
 function Committee() {
-  usePageMeta('Organizing Committee', 'Meet the chairs, advisors and technical programme committee for CONF 2026.');
+  usePageMeta('Organizing Committee', 'Meet the chairs, advisors and technical programme committee for I-AM-ComCyS 2027.');
   
   const technical = [
   'Dr. Sangram Ray · NIT Sikkim',
