@@ -1773,7 +1773,7 @@ const committeeRoles: Array<[string, string[]]> = [
     'Dr. Malaya Dutta Borah · NIT Silchar, India',
     'Dr. Badal Soni · NIT Silchar, India',
     'Dr. Sugnya Devi K · NIT Silchar, India',
-    'Dr. Dilip Kumar Ghosh'
+    'Dr. Dilip Kumar Ghose · NIT Silchar, India'
   ]],
 
   ['Convener', [
@@ -1842,6 +1842,7 @@ const committeePhotos: Record<string, string> = {
   'Dr. Malaya Dutta Borah': '/committee/malaya.jpg',
   'Dr. Badal Soni': '/committee/soni.jpg',
   'Dr. Sugnya Devi K': '/committee/devi.jpg',
+  'Dr. Dilip Kumar Ghose': '/committee/dilip1.jpg',
 
   // Convener
   'Dr. Kedar Nath Das': '/committee/nath.jpg',
