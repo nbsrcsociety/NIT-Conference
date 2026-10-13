@@ -1804,8 +1804,6 @@ const committeePhotos: Record<string, string> = {
 
   'Dr. Ripon Patgiri': '/committee/patgiri.jpg',
 
-  // Hospitality Chairs
-  'Dr. Jupita Hazarika': '/committee/image.png',
 };
 
 
