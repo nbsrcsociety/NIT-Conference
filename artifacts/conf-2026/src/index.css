@@ -590,7 +590,7 @@
 
 .committee-marquee-card {
   display: flex;
-  flex: 0 0 340px;
+  flex: 0 0 390px;
   width: 100%;
 min-width: 360px;
   align-items: center;
@@ -683,11 +683,13 @@ color: #647fa8;
     padding: 44px 0;
   }
 
-  .committee-marquee-card {
-    flex-basis: 290px;
-    padding: 16px;
-    gap: 12px;
-  }
+ .committee-marquee-card {
+  flex: 0 0 380px;
+  width: 380px;
+  min-width: 380px;
+  padding: 16px;
+  gap: 12px;
+}
 
   .committee-marquee-photo {
     flex-basis: 64px;
