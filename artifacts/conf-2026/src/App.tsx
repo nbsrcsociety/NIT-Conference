@@ -169,7 +169,7 @@ function Header() {
                   .toLowerCase()
                   .replaceAll(' ', '-')}`}
                 className={cn(
-                  'border-b-2 border-transparent py-2 text-[11px] font-bold uppercase tracking-[.12em] text-slate-300 transition-colors hover:border-cyan-300 hover:text-cyan-200',
+                  'border-b-2 border-transparent whitespace-nowrap py-2 text-[15px] font-bold uppercase tracking-wide text-slate-300 transition-colors hover:border-cyan-300 hover:text-cyan-200',
                   location === item.href &&
                     'border-cyan-300 text-cyan-200'
                 )}
@@ -182,7 +182,7 @@ function Header() {
               href="/contact"
               data-testid="link-nav-contact"
               className={cn(
-                'border-b-2 border-transparent py-2 text-[11px] font-bold uppercase tracking-[.12em] text-slate-300 transition-colors hover:border-cyan-300 hover:text-cyan-200',
+                'border-b-2 border-transparent whitespace-nowrap py-2 text-[15px] font-bold uppercase tracking-wide text-slate-300 transition-colors hover:border-cyan-300 hover:text-cyan-200',
                 location === '/contact' &&
                   'border-cyan-300 text-cyan-200'
               )}
@@ -195,7 +195,7 @@ function Header() {
             <Link
               href="/registration"
               data-testid="link-header-register"
-              className="navbar-slide-right button-pattern rounded-lg px-4 py-2 text-[11px] font-extrabold uppercase tracking-[.12em]"
+              className="navbar-slide-right button-pattern whitespace-nowrap rounded-lg px-4 py-2 text-[13px] font-extrabold uppercase tracking-wide"
             >
               Register now
               <ArrowUpRight className="ml-1 inline" size={14} />
@@ -496,13 +496,13 @@ function QuickLinksRow() {
                 .replaceAll(' ', '-')}`}
               key={label}
               className={cn(
-                'group flex items-center justify-between gap-3 rounded-xl border border-blue-900/10 bg-[#f6f9ff]/70 px-4 py-4 text-xs font-bold uppercase tracking-[.08em] text-slate-700 transition',
+               'group flex items-center justify-between gap-2 whitespace-nowrap rounded-xl border border-blue-900/10 bg-[#f6f9ff]/70 px-3 py-4 text-[13px] font-bold uppercase tracking-wide text-slate-700 transition',
                 'hover:-translate-y-0.5 hover:border-blue-500/50',
                 highlight &&
                   'border-cyan-500/40 bg-gradient-to-r from-cyan-100/80 to-blue-100/80 text-blue-900'
               )}
             >
-              <span className="flex items-center gap-3">
+             <span className="flex min-w-0 items-center gap-2 whitespace-nowrap">
                 <Icon
                   size={18}
                   className="text-blue-600"
@@ -1358,13 +1358,14 @@ function AboutNITAndObjective() {
 
 
 {/* LEFT: NIT SILCHAR LOGO */}
-<div className="flex items-center justify-center lg:row-span-1 lg:h-full lg:justify-center">
+
+<div className="flex flex-col items-center justify-center lg:row-span-1 lg:h-full lg:justify-center">
   <a
     href="https://www.nits.ac.in/"
     target="_blank"
     rel="noopener noreferrer"
     aria-label="Visit NIT Silchar website"
-    className="group flex h-56 w-56 items-center justify-center overflow-hidden rounded-full bg-white/90 p-3 shadow-xl ring-2 ring-blue-200 transition-all duration-300 hover:scale-105 hover:shadow-2xl md:h-64 md:w-64"
+    className="group flex h-56 w-56 items-center justify-center overflow-hidden rounded-full bg-white/95 p-3 shadow-2xl ring-4 ring-cyan-300/70 transition-all duration-300 hover:scale-105 hover:shadow-[0_0_35px_rgba(34,211,238,0.6)] md:h-64 md:w-64"
   >
     <img
       src="/nit_logo.png"
@@ -1372,7 +1373,27 @@ function AboutNITAndObjective() {
       className="h-full w-full scale-[1.12] object-contain transition-transform duration-300 group-hover:scale-[1.2]"
     />
   </a>
+
+
+
+
+<a
+  href="https://www.nits.ac.in/"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Visit NIT Silchar website"
+  className="nit-name-marquee mt-5 block w-94 overflow-hidden rounded-2xl border-2 border-cyan-300/80 bg-gradient-to-r from-white via-cyan-50 to-sky-100 py-3 text-blue-900 shadow-[0_6px_18px_rgba(14,116,144,0.16)] transition-all duration-300 hover:-translate-y-1 hover:scale-[1.03] hover:border-cyan-500 hover:shadow-[0_0_28px_rgba(34,211,238,0.5)] md:w-112"
+>
+  <span className="nit-name-marquee-track">
+    <span>National Institute of Technology Silchar</span>
+    <span aria-hidden="true">National Institute of Technology Silchar</span>
+  </span>
+</a>
+
+
+
 </div>
+
 
 
 
@@ -1422,7 +1443,9 @@ function AboutNITAndObjective() {
 
         {/* BOTTOM RIGHT: CONFERENCE LOGO */}
        {/* BOTTOM RIGHT: CONFERENCE LOGO */}
-<div className="flex items-center justify-center">
+
+<div className="flex flex-col items-center justify-center">
+  {/* Conference Logo */}
   <div className="group flex h-50 w-50 items-center justify-center overflow-hidden rounded-2xl bg-white p-5 shadow-xl ring-1 ring-blue-100 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:ring-blue-300 md:h-80 md:w-80">
     <img
       src="/clogo.png"
@@ -1430,7 +1453,23 @@ function AboutNITAndObjective() {
       className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-105"
     />
   </div>
+
+  {/* Animated Conference Name */}
+  <div className="conference-name-marquee mt-4 w-74 overflow-hidden rounded-2xl border-2 border-cyan-300/80 bg-gradient-to-r from-white via-cyan-50 to-sky-100 py-3 text-blue-900 shadow-[0_6px_18px_rgba(14,116,144,0.16)] transition-all duration-300 hover:-translate-y-1 hover:scale-[1.03] hover:border-cyan-500 hover:shadow-[0_0_28px_rgba(34,211,238,0.5)] md:w-55">
+    <div className="conference-name-marquee-track">
+      <span>I-AM-ComCyS 2027</span>
+      <span aria-hidden="true">I-AM-ComCyS 2027</span>
+    </div>
+  </div>
+
 </div>
+
+
+
+
+
+
+
 
       </div>
     </section>
@@ -1455,15 +1494,37 @@ function Aboutcaimla() {
       <div className="mx-auto grid max-w-[1600px] items-center gap-4 lg:min-h-[540px] lg:grid-cols-[0.8fr_1.4fr] lg:gap-2">
 
         {/* CAIMLA Logo */}
-      <div className="flex items-center justify-center lg:row-span-1 lg:h-full lg:justify-center">
-  <div className="group flex h-70 w-70 items-center justify-center overflow-hidden rounded-full bg-white/90 p-3 shadow-xl ring-2 ring-blue-200 transition-all duration-300 hover:scale-105 hover:shadow-2xl md:h-86 md:w-86">
+      
+
+<div className="flex flex-col items-center justify-center lg:row-span-1 lg:h-full lg:justify-center">
+  {/* CAIMLA Logo */}
+  <div className="group flex h-40 w-40 items-center justify-center overflow-hidden rounded-full bg-white/90 p-3 shadow-xl ring-2 ring-blue-200 transition-all duration-300 hover:scale-105 hover:shadow-2xl md:h-62 md:w-62">
     <img
       src="/conference-logo.jpeg"
       alt="CAIMLA Logo"
       className="h-full w-full scale-[1.01] object-contain transition-transform duration-300 group-hover:scale-[1.03]"
     />
   </div>
+
+  {/* Centre Name — directly below the logo */}
+  
+
+<div className="centre-name-marquee mt-4 w-80 overflow-hidden rounded-2xl border-2 border-cyan-300/80 bg-gradient-to-r from-white via-cyan-50 to-sky-100 py-3 text-blue-900 shadow-[0_6px_18px_rgba(14,116,144,0.16)] transition-all duration-300 hover:-translate-y-1 hover:scale-[1.03] hover:border-cyan-500 hover:shadow-[0_0_28px_rgba(34,211,238,0.5)] md:w-110">
+  <div className="centre-name-marquee-track">
+    <span>
+      Centre for Artificial Intelligence and Machine Learning for Applications
+    </span>
+    <span aria-hidden="true">
+      Centre for Artificial Intelligence and Machine Learning for Applications
+    </span>
+  </div>
 </div>
+
+
+
+</div>
+
+
 
 
         {/* CAIMLA Information Card */}
@@ -1517,7 +1578,6 @@ function Home() {
   return <PageShell compact={false}>
     <AnnouncementRow />
     <QuickLinksRow />
-    
     <AboutNITAndObjective />
     <Aboutcaimla/>
     <ImportantDates />

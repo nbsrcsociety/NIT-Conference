@@ -435,7 +435,7 @@
 
   color: #172554;
 
-  font-size: 13px;
+  font-size: 18px;
   font-weight: 700;
 
   white-space: nowrap;
@@ -591,7 +591,8 @@
 .committee-marquee-card {
   display: flex;
   flex: 0 0 340px;
-  min-width: 0;
+  width: 100%;
+min-width: 360px;
   align-items: center;
   gap: 16px;
   padding: 20px;
@@ -633,11 +634,12 @@
 
 .committee-marquee-name {
   overflow: hidden;
-  color: #172033;
-  font-size: 15px;
-  font-weight: 700;
+  font-size: 18px;
+font-weight: 700;
+color: #0f172a;
   line-height: 1.5;
   text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .committee-marquee-role {
@@ -653,11 +655,12 @@
   display: -webkit-box;
   overflow: hidden;
   margin-top: 4px;
-  color: #64748b;
-  font-size: 12px;
-  line-height: 1.5;
+  font-size: 16px;
+font-weight: 500;
+color: #647fa8;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
+  white-space: nowrap;
 }
 
 @keyframes committee-marquee-left {
@@ -823,5 +826,116 @@
 @media (prefers-reduced-motion: reduce) {
   .important-dates-page-enter {
     animation: none !important;
+  }
+}
+
+
+
+/* Continuous right-to-left scrolling centre name */
+.centre-name-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: centreNameScroll 10s linear infinite;
+}
+
+.centre-name-marquee-track span {
+  flex-shrink: 0;
+  white-space: nowrap;
+  padding-right: 48px;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 0.025em;
+}
+
+@keyframes centreNameScroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.centre-name-marquee:hover .centre-name-marquee-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .centre-name-marquee-track {
+    animation: none;
+  }
+}
+
+
+
+/* I-AM-ComCyS 2027 scrolling name */
+.conference-name-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: conferenceNameScroll 4s linear infinite;
+}
+
+.conference-name-marquee-track span {
+  flex-shrink: 0;
+  white-space: nowrap;
+  padding-right: 48px;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+@keyframes conferenceNameScroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.conference-name-marquee:hover .conference-name-marquee-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .conference-name-marquee-track {
+    animation: none;
+  }
+}
+
+
+
+/* NIT Silchar scrolling name */
+.nit-name-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: nitNameScroll 8s linear infinite;
+}
+
+.nit-name-marquee-track span {
+  flex-shrink: 0;
+  white-space: nowrap;
+  padding-right: 48px;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 0.025em;
+}
+
+@keyframes nitNameScroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.nit-name-marquee:hover .nit-name-marquee-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nit-name-marquee-track {
+    animation: none;
   }
 }
