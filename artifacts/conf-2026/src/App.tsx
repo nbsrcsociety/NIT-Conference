@@ -1761,6 +1761,7 @@ const committeeRoles: Array<[string, string[]]> = [
 
   ['Organizing Chairs', [
     'Dr. Banani Basu · NIT Silchar, India',
+    'Dr. Aparajita Dutta · NIT Silchar, India',
     'Dr. Jupitara Hazarika · NIT Silchar, India',
     'Dr. Atanu Sahu · NIT Silchar, India',
     'Dr. Ramanujam E · NIT Silchar, India',
@@ -1813,9 +1814,10 @@ const committeeRoles: Array<[string, string[]]> = [
   ]],
 
   ['Website Management Chairs', [
-    'Dr. Partha Pakray · NIT Silchar, India',
-    'Dr. Ripon Patgiri · NIT Silchar, India',
-    'Dr. Ramanujam E · NIT Silchar, India'
+    'Dr. Saroj Kumar Biswas · NIT Silchar, India',
+    'Dr. Ramanujam E · NIT Silchar, India',
+    'Dr. Partha Pakray · NIT Silchar, India'
+    
   ]],
 ];
 
@@ -1862,7 +1864,6 @@ const committeePhotos: Record<string, string> = {
   'Dr. Dalton Meitei T': '/committee/dalton.jpg',
   'Dr. Murugan R': '/committee/murugan.jpg',
   'Dr. Rajarshi Pramanik': '/committee/pra.jpg',
-
   'Dr. Ripon Patgiri': '/committee/patgiri.jpg',
 
 };
