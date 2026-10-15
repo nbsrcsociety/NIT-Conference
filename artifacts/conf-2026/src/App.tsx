@@ -1791,7 +1791,7 @@ const committeeRoles: Array<[string, string[]]> = [
   ]],
 
   ['Co-Convener', [
-    'Dr. Aparajita Dutta · NIT Silchar, India',
+   
     'Dr. Debbrota Paul Chowdhury · NIT Silchar, India'
   ]],
 
