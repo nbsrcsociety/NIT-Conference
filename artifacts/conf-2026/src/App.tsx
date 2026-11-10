@@ -1116,26 +1116,26 @@ function Footer() {
 
               <div>
                 <p className="font-semibold text-cyan-200">
-                  CSE Department, NIT Silchar
+                  Centre for AI and ML for Applications | NIT Silchar
                 </p>
 
-                <a
-                  href="mailto:saroj@cse.nits.ac.in"
+                
+              </div>
+
+              <div>
+                
+<a
+                  href="mailto:banani@ece.nits.ac.in"
                   className="mt-2 flex items-center gap-3 hover:text-cyan-200"
                 >
                   <Mail
                     size={16}
                     className="shrink-0 text-cyan-300"
                   />
-                  saroj@cse.nits.ac.in
+                 saroj@cse.nits.ac.in
                 </a>
-              </div>
-
-              <div>
-                <p className="font-semibold text-cyan-200">
-                  ECE Department, NIT Silchar
-                </p>
-
+                
+                
                 <a
                   href="mailto:banani@ece.nits.ac.in"
                   className="mt-2 flex items-center gap-3 hover:text-cyan-200"
@@ -1815,9 +1815,6 @@ const committeeRoles: Array<[string, string[]]> = [
 
   ['Website Management Chairs', [
     'Dr. Saroj Kumar Biswas · NIT Silchar, India',
-    'Dr. Ramanujam E · NIT Silchar, India',
-    'Dr. Partha Pakray · NIT Silchar, India'
-    
   ]],
 ];
 
@@ -2710,55 +2707,98 @@ function Contact() {
             children="For conference-related queries, please contact the organizing team at NIT Silchar."
           />
 
-          <div className="mt-12 grid gap-6 md:grid-cols-2">
-            <article className="card-lift rounded-2xl border border-blue-900/10 bg-[#f7faff]/75 p-7">
-              <Building2 className="text-blue-600" size={25} />
+          
+{/* CENTRE FOR AI AND ML FOR APPLICATIONS */}
+<div className="rounded-3xl border border-cyan-200/80 bg-gradient-to-br from-white via-[#f0f7ff] to-[#e1f4ff] p-6 shadow-[0_10px_30px_rgba(30,64,175,0.10)] md:p-8">
 
-              <h2 className="mt-6 font-display text-2xl font-semibold">
-                CSE Department
-              </h2>
+  <div className="grid items-center gap-8 lg:grid-cols-[280px_minmax(0,1fr)]">
 
-              <p className="mt-4 text-sm leading-7 text-slate-600">
-                Department of Computer Science and Engineering
-                <br />
-                NIT Silchar
-                <br />
-                Silchar, Assam, India
-              </p>
+    {/* LEFT SIDE: LOGO AND CENTRE NAME */}
+    <div className="flex flex-col items-center justify-center text-center">
 
-              <a
-                href="mailto:saroj@cse.nits.ac.in"
-                className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-blue-700 hover:text-cyan-700"
-              >
-                <Mail size={16} />
-                saroj@cse.nits.ac.in
-              </a>
-            </article>
+      {/* CAIMLA Logo */}
+      <div className="group flex h-34 w-34 items-center justify-center overflow-hidden rounded-full bg-white p-2 shadow-lg ring-2 ring-blue-200 transition-all duration-300 hover:-translate-y-2 hover:scale-105 hover:shadow-2xl hover:ring-cyan-400 md:h-48 md:w-48">
+        <img
+          src="/conference-logo.jpeg"
+          alt="Centre for AI and ML for Applications Logo"
+          className="h-full w-full object-contain"
+        />
+      </div>
 
-            <article className="card-lift rounded-2xl border border-blue-900/10 bg-[#f7faff]/75 p-7">
-              <Building2 className="text-blue-600" size={25} />
+      {/* Centre Name */}
+      <h2 className="mt-2 max-w-[300px] text-center text-xl font-extrabold leading-relaxed text-[#17346b] md:text-2xl">
+        Centre for AI and ML for Applications
+      </h2>
 
-              <h2 className="mt-6 font-display text-2xl font-semibold">
-                ECE Department
-              </h2>
+      <p className="mt-2 text-sm font-semibold tracking-wide text-blue-600">
+        NIT Silchar, Assam, India
+      </p>
 
-              <p className="mt-4 text-sm leading-7 text-slate-600">
-                Department of Electronics and Communication Engineering
-                <br />
-                NIT Silchar
-                <br />
-                Silchar, Assam, India
-              </p>
+    </div>
 
-              <a
-                href="mailto:banani@ece.nits.ac.in"
-                className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-blue-700 hover:text-cyan-700"
-              >
-                <Mail size={16} />
-                banani@ece.nits.ac.in
-              </a>
-            </article>
-          </div>
+    {/* RIGHT SIDE: DEPARTMENT CARDS */}
+    <div className="grid gap-6 md:grid-cols-2">
+
+      {/* CSE Department */}
+      <div className="group rounded-2xl border border-blue-200/80 bg-white/85 p-5 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] hover:border-cyan-400 hover:bg-white hover:shadow-[0_15px_30px_rgba(30,64,175,0.16)] md:p-6">
+
+        <Building2 size={30} className="mb-5 text-blue-600" />
+
+        <h3 className="mb-4 text-xl font-bold text-slate-900 md:text-2xl">
+          Dr. Saroj Kumar Biswas
+        </h3>
+
+        <div className="space-y-2 text-base leading-relaxed text-slate-600">
+          
+          <p>NIT Silchar</p>
+          <p>Silchar, Assam, India</p>
+        </div>
+
+        <a
+          href="mailto:saroj@cse.nits.ac.in"
+          className="mt-6 inline-flex items-center gap-2 font-semibold text-blue-600 hover:text-cyan-600"
+        >
+          <Mail size={20} />
+          saroj@cse.nits.ac.in
+        </a>
+      </div>
+
+      {/* ECE Department */}
+      <div className="group rounded-2xl border border-blue-200/80 bg-white/85 p-5 shadow-sm transition-all duration-300 hover:-translate-y-2 hover:scale-[1.02] hover:border-cyan-400 hover:bg-white hover:shadow-[0_15px_30px_rgba(30,64,175,0.16)] md:p-6">
+
+        <Building2 size={30} className="mb-5 text-blue-600" />
+
+        <h3 className="mb-4 text-xl font-bold text-slate-900 md:text-2xl">
+          Dr. Banani Basu
+        </h3>
+
+        <div className="space-y-2 text-base leading-relaxed text-slate-600">
+          
+          <p>NIT Silchar</p>
+          <p>Silchar, Assam, India</p>
+        </div>
+
+        <a
+          href="mailto:banani@ece.nits.ac.in"
+          className="mt-6 inline-flex items-center gap-2 font-semibold text-blue-600 hover:text-cyan-600"
+        >
+          <Mail size={20} />
+          banani@ece.nits.ac.in
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
 
           <div className="pattern-mesh section-dark mt-8 rounded-2xl border border-cyan-300/20 p-8">
             <MapPin className="text-cyan-300" size={25} />
