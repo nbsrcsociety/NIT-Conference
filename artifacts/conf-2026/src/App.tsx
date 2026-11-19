@@ -1796,6 +1796,7 @@ const committeeRoles: Array<[string, string[]]> = [
   ]],
 
   ['Publicity Chairs', [
+    'Dr. Myat Thu Zar Htun · University of Computer Studies, Myanmar',
     'Dr. Dalton Meitei T · Manipur University',
     'Dr. Murugan R · NIT Pondicherry, India',
     'Dr. Biswarup Ganguly · NIT Silchar, India',
@@ -1985,8 +1986,6 @@ function Committee() {
   'Dr. Deepanjal Shrestha · Associate Professor and Director of the International Relations Center at Pokhara University, Nepal',
   'Dr. Badal Soni · NIT Silchar',
   'Dr. Malaya Dutta Borah · NIT Silchar',
-
-
   'Dr. Ambedkumar · Associate Professor, Mizoram University',
   'Dr. Prabu M. · Associate Professor, NIT Calicut',
   'Dr. Anandkumar · Associate Professor, NIT Surathkal',
