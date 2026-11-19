@@ -1984,7 +1984,22 @@ function Committee() {
   'Dr. Sangram Ray · NIT Sikkim',
   'Dr. Deepanjal Shrestha · Associate Professor and Director of the International Relations Center at Pokhara University, Nepal',
   'Dr. Badal Soni · NIT Silchar',
-  'Dr. Malaya Dutta Borah · NIT Silchar'
+  'Dr. Malaya Dutta Borah · NIT Silchar',
+
+
+  'Dr. Ambedkumar · Associate Professor, Mizoram University',
+  'Dr. Prabu M. · Associate Professor, NIT Calicut',
+  'Dr. Anandkumar · Associate Professor, NIT Surathkal',
+  'Dr. Saravana Kumar · Associate Professor, NIT Durgapur',
+  'Dr. Venkatesan · Associate Professor, NIT Puducherry',
+  'Prof. Awadhesh K. Singh · Computer Engineering Department, NIT Kurukshetra',
+  'Prof. Pradip K. Das · IIT Guwahati',
+  'Dr. Gyanendra Kumar Verma · Associate Professor, NIT Raipur',
+  'Dr. Rajesh Doriya · Associate Professor, NIT Raipur',
+  'Dr. Chirag Modi · Associate Professor, NIT Goa',
+  'Dr. Nurul Amin Choudhury · Assistant Professor, NIT Meghalaya',
+  'Dr. Ashish Singh Patel · Assistant Professor, NIT Mizoram',
+  'Dr. Candy Lalrempuii · Assistant Professor, Mizoram University'
 ];
   
 
@@ -2165,7 +2180,30 @@ function Committee() {
       'Prof. Tandra Pal · NIT Durgapur',
       'Prof. Sushmita Ghosh · Jadavpur University',
       'Prof. Kaushik Dutta · Interim Director, School of Information Systems and Management, University of South Florida',
-      'Prof. Hans-Peters Kaul · BOKU University, Austria'
+      'Prof. Hans-Peters Kaul · BOKU University, Austria',
+
+     
+
+      
+  'Prof. Premalata Jena · Department of Electrical Engineering, IIT Roorkee',
+  'Prof. Santos Kumar Das · Department of Electronics and Communication Engineering, NIT Rourkela',
+  'Prof. Santu Rana · Deakin University, Australia',
+  'Prof. Anindya Nag · Technische Universität Dresden, Germany',
+  'Dr. Maiga Chang · Professor and Associate Dean, Research and Innovation, Athabasca University, Canada',
+  'Prof. Saraju Mohanty · Department of Computer Science and Engineering, UNT College of Engineering, USA',
+  'Prof. Naychi Lai Lai Thein · University of Computer Studies, Yangon, Myanmar',
+  'Prof. Ratnajit Bhattacharjee · IIT Guwahati',
+  'Prof. Jugal Kalita · University of Colorado, USA',
+  'Prof. Pradip K. Das · Professor, IIT Guwahati'
+
+
+
+
+
+
+
+
+
     ].map((person, personIndex) => (
       <p
         key={`${person}-${personIndex}`}
