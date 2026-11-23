@@ -2161,8 +2161,7 @@ function Committee() {
     Advisory committee
   </h2>
 
-  <div className="mt-7 grid gap-3 rounded-2xl border border-cyan-200/80 bg-gradient-to-r from-white via-[#f0f7ff] to-[#e1f4ff] p-6 text-base font-semibold leading-relaxed text-[#17346b] shadow-[0_5px_14px_rgba(30,64,175,0.10)] md:grid-cols-2">
-  
+  <div className="mt-7 grid gap-x-5 gap-y-2 p-0 text-base font-semibold leading-relaxed text-[#17346b] md:grid-cols-2">
     {[
       'Prof. P. N. Suganthan · Qatar University, Qatar',
       'Prof. Kusum Deep · IIT Roorkee, India',
@@ -2206,7 +2205,7 @@ function Committee() {
     ].map((person, personIndex) => (
       <p
         key={`${person}-${personIndex}`}
-        className="border-b border-cyan-200/80 pb-3"
+        className="rounded-xl border border-cyan-200/80 bg-gradient-to-r from-white via-[#f0f7ff] to-[#e1f4ff] px-4 py-4 text-base font-semibold leading-relaxed text-[#17346b] shadow-[0_5px_14px_rgba(30,64,175,0.10)] transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400 hover:shadow-[0_10px_22px_rgba(30,64,175,0.18)]"
       >
         {person}
       </p>
@@ -2257,7 +2256,7 @@ function Committee() {
     Guest Editors
   </h2>
 
-  <div className="mt-7 grid gap-x-5 gap-y-2 rounded-2xl border border-cyan-200/80 bg-gradient-to-r from-white via-[#f0f7ff] to-[#e1f4ff] p-6 text-base font-semibold leading-relaxed text-[#17346b] shadow-[0_5px_14px_rgba(30,64,175,0.10)] md:grid-cols-2">
+  <div className="mt-7 grid gap-x-5 gap-y-2 p-0 text-base font-semibold leading-relaxed text-[#17346b] md:grid-cols-2">
     {[
       'Prof. Sudan Jha · Kathmandu University, Nepal',
       'Prof. Evizal Abdul Kadir · Universitas Islam Riau (UIR), Indonesia',
@@ -2266,7 +2265,7 @@ function Committee() {
     ].map((person, personIndex) => (
       <p
         key={`${person}-${personIndex}`}
-        className="border-b border-cyan-200/80 pb-3"
+        className="rounded-xl border border-cyan-200/80 bg-gradient-to-r from-white via-[#f0f7ff] to-[#e1f4ff] px-4 py-4 text-base font-semibold leading-relaxed text-[#17346b] shadow-[0_5px_14px_rgba(30,64,175,0.10)] transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400 hover:shadow-[0_10px_22px_rgba(30,64,175,0.18)]"
       >
         {person}
       </p>
